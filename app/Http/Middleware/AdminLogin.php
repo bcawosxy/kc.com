@@ -12,7 +12,7 @@ class AdminLogin
         if (Auth::guard('web')->check()) {
             return $next($request);
         } else {
-            return redirect()->route('kc-metalwork::login');
+            return redirect()->route('KC::login');
         }
     }
 }

@@ -6,13 +6,15 @@
                 <a href="{{url('admin')}}"><i class="fa fa-area-chart"></i> <span>首頁資訊</span></a>
             </li>
         </ul>
-        <!--
+
         <ul class="sidebar-menu">
-            <li class="header">關於品利興</li>
+            <li class="header">關於我們</li>
             <li>
-                <a href="{{url('admin/about')}}"><i class="fa fa-book"></i> <span>關於品利興</span></a>
+                <a href="{{url('admin/about')}}"><i class="fa fa-book"></i><span>關於{{config('app.name_CHT')}}</span></a>
             </li>
         </ul>
+
+        <!--
         <ul class="sidebar-menu">
             <li class="header">商品資訊</li>
             <li>
@@ -49,12 +51,13 @@
                 <a href="{{url('admin/admins')}}"><i class="fa fa-list-ul"></i> <span>管理員設定</span></a>
             </li>
         </ul>
+         -->
         <ul class="sidebar-menu">
             <li class="header">登出</li>
             <li>
                 <a href="{{url('admin/logout')}}"><i class="fa fa-sign-out"></i> <span>登出</span></a>
             </li>
         </ul>
-        -->
+
     </section>
 </aside>

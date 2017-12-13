@@ -29,7 +29,7 @@ class KcController extends Controller
             return redirect()->route('admin::index');
         } else {
             //登入失敗 回到登入頁
-            return redirect()->route('pindelta::login')->withErrors(['msg' => '帳號或密碼錯誤, 請重新登入。']);
+            return redirect()->route('KC::login')->withErrors(['msg' => '帳號或密碼錯誤, 請重新登入。']);
         }
     }
 

@@ -19,10 +19,10 @@ Route::group(['prefix'=>'/', 'as'=>'KC::'], function() {
 Route::group(['prefix'=>'admin', 'as'=>'admin::'], function() {
     // index , 圖表
     Route::get('/', ['as' => 'index', 'uses'=> 'AdminController@index']) ;
-//
-//    //關於品利興
-//    Route::get('/about', ['as' => 'about', 'uses'=> 'AdminController@about']) ;
-//    Route::post('/about', ['as' => 'about', 'uses'=> 'AdminController@aboutEdit']) ;
+
+    //關於凱詮
+    Route::get('/about', ['as' => 'about', 'uses'=> 'AdminController@about']) ;
+    Route::post('/about', ['as' => 'about', 'uses'=> 'AdminController@aboutEdit']) ;
 //
 //    //產品類別
 //    Route::get('/categoryarea', ['as'=> 'categoryarea', 'uses'=> 'AdminController@categoryarea']) ;
@@ -66,8 +66,8 @@ Route::group(['prefix'=>'admin', 'as'=>'admin::'], function() {
 //    Route::get('/admins', ['as'=> 'admins', 'uses'=> 'AdminController@admins']) ;
 //    Route::post('/admins/edit', ['as'=> 'admins_edit', 'uses'=> 'AdminController@adminsEdit']) ;
 //
-//    //登出
-//    Route::get('/logout', ['as'=> 'logout', 'uses'=> 'AdminController@logout']) ;
+    //登出
+    Route::get('/logout', ['as'=> 'logout', 'uses'=> 'AdminController@logout']) ;
 //
 //    //檔案上傳
 //    Route::post('/fileUpload/', ['as' => 'fileUpload', 'uses'=> 'AdminController@fileUpload']) ;
