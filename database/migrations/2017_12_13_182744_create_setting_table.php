@@ -18,6 +18,8 @@ class CreateSettingTable extends Migration
 			$table->string('key');
 			$table->text('value');
 			$table->boolean('serialized');
+            $table->integer('admin_id');
+			$table->timestamps();
         });
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Model\Setting;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,22 +15,19 @@ class AdminController extends Controller
 
 	public function about()
 	{
-		echo 123;
-//		$data = [];
-//		$about = About::where('category', 'about_c')
-//			->select('about.*', 'admin.name as admin_name')
-//			->leftJoin('admin', 'about.modify_id', '=', 'admin.id')
-//			->first();
-//
-//		if($about) {
-//			$data = [
-//				'value' => ($about->value) ? $about->value : null,
-//				'updated_at' => ($about->updated_at) ? $about->updated_at : null,
-//				'modify_name' => ($about->admin_name) ? $about->admin_name : null,
-//			];
-//		}
-//
-//		return view('admin.about', ['data' => $data]);
+		$about = Setting::getSetting('about', 'content');
+
+		$data = [];
+
+		if($about) {
+			$data = [
+				'value' => ($about->value) ? $about->value : null,
+				'updated_at' => ($about->updated_at) ? $about->updated_at : null,
+				'admin_id' => ($about->admin_id) ? $about->admin_id : null,
+			];
+		}
+
+		return view('admin.about', ['data' => $data]);
 	}
 
 	public function aboutEdit(Request $request) {
