@@ -8,9 +8,12 @@
         </ul>
 
         <ul class="sidebar-menu">
-            <li class="header">關於我們</li>
+            <li class="header">網站內容設定</li>
             <li>
                 <a href="{{url('admin/about')}}"><i class="fa fa-book"></i><span>關於{{config('app.name_CHT')}}</span></a>
+            </li>
+            <li>
+                <a href="{{url('admin/service')}}"><i class="fa fa-book"></i><span>服務項目</span></a>
             </li>
         </ul>
 

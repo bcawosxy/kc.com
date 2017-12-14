@@ -12,7 +12,13 @@
     <link rel="stylesheet" href="{{ URL::asset('adminlte/adminlte/css/AdminLTE.min.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/icheck/all.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/font-awesome/css/font-awesome.css')}}">
-    <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/datatables/dataTables.bootstrap.css')}}">
+
+    <link rel="stylesheet" href="{{ URL::asset('plugins/datatables/css/editor.dataTables.min.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('plugins/datatables/css/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('plugins/datatables/css/buttons.dataTables.min.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('plugins/datatables/css/select.dataTables.min.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('plugins/datatables/css/rowReorder.dataTables.min.css')}}">
+
     <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/icheck/minimal/minimal.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('js/admin/jquery-file-upload/css/jquery.fileupload.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/select2/select2.min.css')}}">
@@ -47,12 +53,17 @@
 @section('footer')
     <script src="{{ URL::asset('adminlte/js/jquery_2.1.4.min.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
-    <script src="{{ URL::asset('adminlte/adminlte/js/app.min.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/adminlte/js/demo.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/plugins/slimscroll/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/plugins/fastclick/fastclick.min.js') }}" type="text/javascript"></script>
-    <script src="{{ URL::asset('adminlte/plugins/datatables/jquery.dataTables.min.js')}}" type="text/javascript"></script>
-    <script src="{{ URL::asset('adminlte/plugins/datatables/dataTables.bootstrap.min.js')}}" type="text/javascript"></script>
+
+    <script src="{{ URL::asset('plugins/datatables/js/jquery.dataTables.min.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('plugins/datatables/js/dataTables.buttons.min.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('plugins/datatables/js/dataTables.select.min.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('plugins/datatables/js/dataTables.editor.min.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('plugins/datatables/js/dataTables.rowReorder.min.js')}}" type="text/javascript"></script>
+
+    <script src="{{ URL::asset('adminlte/adminlte/js/app.min.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/plugins/icheck/icheck.min.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('js/admin/jquery-file-upload/js/jquery.ui.widget.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('js/admin/jquery-file-upload/js/jquery.iframe-transport.js')}}" type="text/javascript"></script>

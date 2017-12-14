@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Model\Setting;
 use App\Model\Admin;
+use App\Model\Setting;
+use App\Model\Service;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -58,5 +59,21 @@ class AdminController extends Controller
 	{
 		Auth::logout();
 		return redirect()->route('KC::login');
+	}
+
+	public function service()
+	{
+		$services = Service::orderBy('sort', 'asc')->get();
+
+		$data = [
+			'services' => json_decode($services, true),
+		];
+
+		return view('admin.service', ['data' => $data]);
+	}
+
+	public function serviceEdit(Request $request)
+	{
+
 	}
 }
