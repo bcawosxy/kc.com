@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/font-awesome/css/font-awesome.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/datatables/dataTables.bootstrap.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/icheck/minimal/minimal.css')}}">
-    <link rel="stylesheet" href="{{ URL::asset('js/jquery-file-upload/css/jquery.fileupload.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('js/admin/jquery-file-upload/css/jquery.fileupload.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/select2/select2.min.css')}}">
-    <link rel="stylesheet" href="{{ URL::asset('js/sweet-alert2/css/sweet-alert2.min.css')}}">
-    <link rel="stylesheet" href="{{ URL::asset('js/jquery-ui-1.12.1.custom/jquery-ui.min.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('js/admin/sweet-alert2/css/sweet-alert2.min.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('js/admin/jquery-ui-1.12.1.custom/jquery-ui.min.css')}}">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -39,11 +39,9 @@
         @yield('content')
 
         <footer class="main-footer">
-            <strong>Copyright &copy; 2015-2016 <a href="{{url('')}}"> Memorable Supplier</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2017 <a href="{{url('')}}">  kc-metalwork</a>.</strong> All rights reserved.
         </footer>
     </div>
-
-
 </body>
 
 @section('footer')
@@ -56,35 +54,35 @@
     <script src="{{ URL::asset('adminlte/plugins/datatables/jquery.dataTables.min.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/plugins/datatables/dataTables.bootstrap.min.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/plugins/icheck/icheck.min.js')}}" type="text/javascript"></script>
-    <script src="{{ URL::asset('js/jquery-file-upload/js/jquery.ui.widget.js')}}" type="text/javascript"></script>
-    <script src="{{ URL::asset('js/jquery-file-upload/js/jquery.iframe-transport.js')}}" type="text/javascript"></script>
-    <script src="{{ URL::asset('js/jquery-file-upload/js/jquery.fileupload.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('js/admin/jquery-file-upload/js/jquery.ui.widget.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('js/admin/jquery-file-upload/js/jquery.iframe-transport.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('js/admin/jquery-file-upload/js/jquery.fileupload.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/plugins/select2/select2.full.min.js')}}" type="text/javascript"></script>
-    <script src="{{ URL::asset('js/sweet-alert2/js/sweet-alert2.min.js')}}" type="text/javascript"></script>
-    <script src="{{ URL::asset('js/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('js/admin/sweet-alert2/js/sweet-alert2.min.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('js/admin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/plugins/highcharts/js/highcharts.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/plugins/highcharts/js/exporting.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/plugins/highcharts/js/sand-signika.js')}}" type="text/javascript"></script>
     @show
 <script>
-//    function _swal(r) {
-//        switch (r.status) {
-//            case 0 : status = 'error'; break;
-//            case 2 : status = 'warning'; break;
-//            case 3 : status = 'info'; break;
-//            case 4 : status = 'question'; break;
-//            default : status = 'success'; break;
-//        }
-//
-//        swal({
-//            'text' : r.message,
-//            'type' : status,
-//            'timer': 2000,
-//        }).then(
-//            function () { if(r.redirect) location.href = r.redirect; },
-//            function (dismiss) { if(r.redirect) location.href = r.redirect; }
-//        ).catch(swal.noop);
-//    }
+    function _swal(r) {
+        switch (r.status) {
+            case 0 : status = 'error'; break;
+            case 2 : status = 'warning'; break;
+            case 3 : status = 'info'; break;
+            case 4 : status = 'question'; break;
+            default : status = 'success'; break;
+        }
+
+        swal({
+            'text' : r.message,
+            'type' : status,
+            'timer': 2000,
+        }).then(
+            function () { if(r.redirect) location.href = r.redirect; },
+            function (dismiss) { if(r.redirect) location.href = r.redirect; }
+        ).catch(swal.noop);
+    }
 </script>
 
 </html>

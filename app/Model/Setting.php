@@ -15,6 +15,6 @@ class Setting extends Model
             $return = Setting::where(['code' => $code, 'key' => $key])->first();
         }
 
-        return $return;
+        return json_decode($return, true);
     }
 }

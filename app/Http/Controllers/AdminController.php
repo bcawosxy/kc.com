@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Model\Setting;
+use App\Model\Admin;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -21,9 +22,9 @@ class AdminController extends Controller
 
 		if($about) {
 			$data = [
-				'value' => ($about->value) ? $about->value : null,
-				'updated_at' => ($about->updated_at) ? $about->updated_at : null,
-				'admin_id' => ($about->admin_id) ? $about->admin_id : null,
+				'value' => ($about['value']) ? $about['value'] : null,
+				'updated_at' => ($about['updated_at']) ? $about['updated_at'] : null,
+				'admin' => ($about['admin_id']) ? Admin::getAdmin($about['admin_id']) : null,
 			];
 		}
 
@@ -33,7 +34,7 @@ class AdminController extends Controller
 	public function aboutEdit(Request $request) {
 		$user = Auth::user();
 
-		if(About::where('category', 'about_c')->update(['value'=>$request->value, 'modify_id'=>$user->id])) {
+		if(Setting::where(['code' => 'about', 'key' => 'content'])->update(['value'=>$request->value, 'admin_id' => $user->id])) {
 			$result = 1;
 			$message = '修改完成';
 		} else {
