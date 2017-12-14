@@ -47,6 +47,22 @@ class AdminController extends Controller
 		return json_encode_return($result, $message, $redirect );
 	}
 
+    public function getService()
+    {
+        $services = Service::orderBy('sort', 'asc')->get();
+
+        foreach ($services as $k0 => $v0) {
+            $service['data'][] = [
+                'sort' => $v0['sort'],
+                'name' => $v0['name'],
+                'title' =>$v0['title'],
+                'id' => $v0['id'],
+            ];
+        }
+
+        return json_encode($service);
+	}
+
     public function index()
     {
 
@@ -72,8 +88,17 @@ class AdminController extends Controller
 		return view('admin.service', ['data' => $data]);
 	}
 
-	public function serviceEdit(Request $request)
+	public function updateService(Request $request)
 	{
+      $data = $request->data;
 
+      foreach($data as $k0 => $v0) {
+          $edit = [
+              'sort' => $v0['sort'],
+              'name' => $v0['name'],
+              'title' => $v0['title'],
+          ];
+          Service::where('id', $v0['id'])->update($edit);
+      }
 	}
 }

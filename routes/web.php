@@ -26,7 +26,9 @@ Route::group(['prefix'=>'admin', 'as'=>'admin::'], function() {
 
     //服務項目
     Route::get('/service', ['as' => 'service', 'uses'=> 'AdminController@service']) ;
-    Route::post('/service', ['as' => 'service', 'uses'=> 'AdminController@serviceEdit']) ;
+    Route::get('/service/get', ['uses'=> 'AdminController@getService']) ;
+    Route::post('/service/update', ['uses'=> 'AdminController@updateService']) ;
+
 //
 //    //產品類別
 //    Route::get('/categoryarea', ['as'=> 'categoryarea', 'uses'=> 'AdminController@categoryarea']) ;

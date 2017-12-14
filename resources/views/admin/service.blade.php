@@ -27,16 +27,10 @@
                                                     <th>#</th>
                                                     <th>名稱</th>
                                                     <th>子名稱</th>
+                                                    <th>id</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach ($data['services'] as $v0)
-                                                    <tr>
-                                                        <td>{{$v0['sort']}}</td>
-                                                        <td>{{$v0['name']}}</td>
-                                                        <td>{{$v0['title']}}</td>
-                                                    </tr>
-                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -48,7 +42,7 @@
                 </div>
             </div>
         </section>
-
+        <a href="javascript:void(0)" id="test">test</a>
     </div>
 @endsection()
 
@@ -63,7 +57,8 @@
                 idSrc:  'sort',
                 fields: [{
                     label: "排序:",
-                    name: "sort"
+                    name: "sort",
+                    type : "hidden"
                 },{
                     label: "名稱:",
                     name: "name"
@@ -74,20 +69,19 @@
                 ]
             } );
 
-            editor.on( 'create', function ( e, json, data ) {
-               console.log(json);
-            });
 
             var table = $('#example').DataTable( {
                 dom : "Bfrtip",
+                ajax : "{{url('admin/service/get')}}",
                 order : [[0, "asc"]],
                 columns: [
                     { data: "sort", width : '6%'},
                     { data: "name",},
                     { data: "title",},
+                    { data: "id",},
                 ],
                 columnDefs: [
-                    { orderable: false, targets: [ 0,1,2 ] }
+                    { orderable: false, targets: [ 0,1,2,3 ] }
                 ],
                 rowReorder: {
                     dataSrc: 'sort',
@@ -100,30 +94,41 @@
                 ],
             } );
 
-//            table.on( 'row-reorder', function ( e, diff, edit ) {
-//                console.log();
-//            } );
+//            editor.on( 'create', function ( e, json, data ) {
+//
+//            });
+
+            table.on( 'row-reordered', function ( e, diff, edit ) {
+                var rows = table.rows().data(),
+                    data = [];
+                for (i = 0; i < rows.length; i++) {
+                    data.push(rows[i]);
+                }
+                updateData(data);
+            } );
+
+            $('#test').on('click', function(){
+                table.ajax.reload( null, false );
+            })
         } );
 
-//        $(function () {
-//
-//            $("#example").DataTable({
-//                idSrc:  'sort',
-//                rowReorder: {
-//                    selector: 'tr'
-//                },
-//                "columnDefs" : [
-//                    { orderable: true, className: 'reorder', targets: 0 },
-//                ],
-//                "responsive": true,
-//                "order": [[0, "asc"]],
-//                "columns": [
-//                    null,
-//                    { "orderable": false },
-//                    { "orderable": false },
-//                    { "orderable": false },
-//                ]
-//            });
-//        });
+        function updateData(data) {
+            $.ajax({
+                url : '{{url("admin/service/update")}}',
+                type: 'post',
+                data: {
+                    data : data,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                dataType: 'json',
+                success: function (r) {
+                },
+                error: function (r) {
+                },
+            });
+        }
+
     </script>
 @endsection
