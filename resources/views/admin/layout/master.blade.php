@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="{{ URL::asset('js/admin/sweet-alert2/css/sweet-alert2.min.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('js/admin/jquery-ui-1.12.1.custom/jquery-ui.min.css')}}">
 
+    <link rel="stylesheet" href="{{ URL::asset('js/admin/croppie/croppie.min.css')}}">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
@@ -74,6 +76,7 @@
     <script src="{{ URL::asset('adminlte/plugins/highcharts/js/highcharts.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/plugins/highcharts/js/exporting.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/plugins/highcharts/js/sand-signika.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('js/admin/croppie/croppie.min.js')}}" type="text/javascript"></script>
     @show
 <script>
     function _swal(r) {

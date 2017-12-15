@@ -124,6 +124,10 @@
                                         <p class="text-light-blue">{{$data['product']['admin'] or ''}}</p>
                                     </dd>
                                     <br>
+                                    <dd>
+                                        <button id="pop">pop</button>
+                                    </dd>
+                                    <br>
                                 </dl>
                             </div>
                             <!--end tab1-->
@@ -252,6 +256,20 @@
                 });
             });
         });
+
+        $('#pop').on('click', function() {
+            var img = $('#cover').attr('src'),
+                html = `<div class="croppieDiv"></div>`;
+
+            swal({
+                html: html,
+                confirmButtonText : 'Great!',
+                cancelButtonText : '<i class="fa fa-thumbs-down"></i>',
+                width : '100%',
+                heigh : 'auto',
+            })
+
+        })
     });
 
 </script>
