@@ -22,12 +22,21 @@ Route::group(['prefix'=>'admin', 'as'=>'admin::'], function() {
 
     //關於凱詮
     Route::get('/about', ['as' => 'about', 'uses'=> 'AdminController@about']) ;
-    Route::post('/about', ['as' => 'about', 'uses'=> 'AdminController@aboutEdit']) ;
+    Route::post('/about', ['uses'=> 'AdminController@aboutEdit']) ;
 
     //服務項目
     Route::get('/service', ['as' => 'service', 'uses'=> 'AdminController@service']) ;
     Route::get('/service/get', ['uses'=> 'AdminController@getService']) ;
     Route::post('/service/refresh', ['uses'=> 'AdminController@refreshService']) ;
+
+	//作品管理
+	Route::get('/product', ['as'=> 'product', 'uses'=> 'AdminController@product']) ;
+	Route::get('/product/content/{id?}', ['as'=> 'productContent', 'uses'=> 'AdminController@productContent']) ;
+	Route::post('/product/delete/', ['uses'=> 'AdminController@productDelete']) ;
+	Route::post('/product/edit', ['uses'=> 'AdminController@productEdit']) ;
+
+	//檔案上傳
+	Route::post('/fileUpload/', ['as' => 'fileUpload', 'uses'=> 'AdminController@fileUpload']) ;
 
 //
 //    //產品類別

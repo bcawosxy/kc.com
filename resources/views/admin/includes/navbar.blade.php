@@ -13,7 +13,17 @@
                 <a href="{{url('admin/about')}}"><i class="fa fa-book"></i><span>關於{{config('app.name_CHT')}}</span></a>
             </li>
             <li>
-                <a href="{{url('admin/service')}}"><i class="fa fa-book"></i><span>服務項目</span></a>
+                <a href="{{url('admin/service')}}"><i class="fa fa-book"></i><span>服務項目管理</span></a>
+            </li>
+        </ul>
+
+        <ul class="sidebar-menu">
+            <li class="header">作品成果管理</li>
+            <li>
+                <a href="{{url('admin/product')}}"><i class="fa fa-book"></i><span>作品管理</span></a>
+            </li>
+            <li>
+                <a href="{{url('admin/service')}}"><i class="fa fa-book"></i><span>首頁展示設定</span></a>
             </li>
         </ul>
 

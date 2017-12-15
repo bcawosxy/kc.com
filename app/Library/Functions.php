@@ -36,6 +36,14 @@ if (!function_exists('get_label')) {
 		$return = '';
 
 		switch ($status) {
+			case '0' :
+				$return = '<span class="label label-warning">否</span>';
+				break;
+
+			case '1' :
+				$return = '<span class="label label-success">是</span>';
+				break;
+
 			case 'archive' :
 				$return = '<div><span style="font-weight:bold;" class="bg-light-blue color-palette">'.ucfirst($status).'</span></div>';
 				break;
@@ -49,6 +57,7 @@ if (!function_exists('get_label')) {
 			case 'read' :
 				$return = '<span class="label label-success">'.ucfirst($status).'</span>';
 				break;
+
 		}
 
 		return $return;
