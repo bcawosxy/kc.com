@@ -18,5 +18,8 @@ class Product extends Model
 		return $return;
 	}
 
-
+    static function getProducts2Showcase() {
+        $return = Product::where([['status', '!=', 'delete'], ['showcase', '=', 1]])->get();
+        return $return;
+    }
 }

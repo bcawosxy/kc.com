@@ -23,7 +23,7 @@
                 <a href="{{url('admin/product')}}"><i class="fa fa-book"></i><span>作品管理</span></a>
             </li>
             <li>
-                <a href="{{url('admin/service')}}"><i class="fa fa-book"></i><span>首頁展示設定</span></a>
+                <a href="{{url('admin/showcase')}}"><i class="fa fa-book"></i><span>首頁展示設定</span></a>
             </li>
         </ul>
 

@@ -35,6 +35,10 @@ Route::group(['prefix'=>'admin', 'as'=>'admin::'], function() {
 	Route::post('/product/delete/', ['uses'=> 'AdminController@productDelete']) ;
 	Route::post('/product/edit', ['uses'=> 'AdminController@productEdit']) ;
 
+    //首頁作品展示設定
+	Route::get('/showcase', ['as' => 'showcase', 'uses'=> 'AdminController@showcase']) ;
+	Route::post('/showcase/update', ['as' => 'showcaseupdate', 'uses'=> 'AdminController@showcaseUpdate']) ;
+
 	//檔案上傳
 	Route::post('/fileUpload/', ['as' => 'fileUpload', 'uses'=> 'AdminController@fileUpload']) ;
 

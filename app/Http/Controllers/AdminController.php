@@ -7,6 +7,7 @@ use App\Model\Admin;
 use App\Model\Product;
 use App\Model\Setting;
 use App\Model\Service;
+use App\Model\Showcase;
 use App\Library\UploadHandler;
 use Illuminate\Http\Request;
 
@@ -148,12 +149,17 @@ class AdminController extends Controller
 		$message = '刪除失敗, 請重新操作。';
 		$redirect = url()->route('admin::productContent', ['id' => $id]);
 
+        if(!Showcase::where('product_id', $id)->delete() ) {
+            goto _return;
+        }
+
 		if( Product::where('id', $id)->update(['status' => 'delete']) ) {
 			$result = 1;
 			$message = '成功刪除。';
 			$redirect = url()->route('admin::product');
 		}
 
+        _return :
 		return json_encode_return($result, $message, $redirect );
 	}
 
@@ -194,13 +200,20 @@ class AdminController extends Controller
 				$redirect = url()->route('admin::product');
 			}
 		} else {
+            if( $showcase == 0 ) {
+               if(!Showcase::where('product_id', $id)->delete() ) {
+                    goto _return;
+               }
+            }
+
 			if (Product::where('id', $id)->update($params)) {
-				$result = 1;
-				$message = '修改資料完成';
-				$redirect = url()->route('admin::productContent', ['id' => $id]);
+                $result = 1;
+                $message = '修改資料完成';
+                $redirect = url()->route('admin::productContent', ['id' => $id]);
 			}
 		}
 
+		_return :
 		return json_encode_return($result, $message, $redirect );
 	}
 
@@ -273,4 +286,52 @@ class AdminController extends Controller
 
 		return view('admin.service', ['data' => $data]);
 	}
+
+    public function showcase()
+    {
+        $e_showcase = Showcase::getShowcases();
+        $showcase = [];
+        $onCase = [];
+        foreach (json_decode($e_showcase, true) as $k0 => $v0) {
+            $showcase[] = [
+                'id' => $v0['id'],
+                'name' => $v0['name'],
+                'cover' => url()->asset('storage/images/product').DIRECTORY_SEPARATOR.$v0['cover'],
+            ];
+
+            $onCase[] = $v0['id'];
+        }
+
+        $e_product2showcase = Product::getProducts2Showcase();
+        $product = [];
+        foreach (json_decode($e_product2showcase, true) as $k0 => $v0) {
+            if(!in_array($v0['id'], $onCase)) {
+                $product[] = [
+                    'id' => $v0['id'],
+                    'name' => $v0['name'],
+                    'cover' => url()->asset('storage/images/product') . DIRECTORY_SEPARATOR . $v0['cover'],
+                ];
+            }
+        }
+
+        $data = [
+            'product' => $product,
+            'showcase' => $showcase,
+        ];
+
+        return view('admin.showcase', ['data' => $data]);
+    }
+
+    public function showcaseUpdate(Request $request)
+    {
+        $id = ($request->id) ? $request->id : [];
+
+        Showcase::truncate();
+
+        foreach ($id as $k0 => $v0) {
+            Showcase::insert(['product_id' => $v0, 'sort' => ($k0+1)]);
+        }
+
+        return json_encode_return(1);
+    }
 }
