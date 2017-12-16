@@ -92,7 +92,7 @@ class AdminController extends Controller
 	public function product()
 	{
 		$products = Product::getProducts();
-
+        $data = [];
 		foreach (json_decode($products, true) as $k0 => $v0) {
 			$data[] = [
 				'id' => $v0['id'],
@@ -165,21 +165,21 @@ class AdminController extends Controller
 		foreach ($postParams as $v0) { $$v0 = $request->$v0; }
 		if($name == '' || $status == '' || $showcase == '' ||  $cover == '' ) return json_encode_return(0, '資料未填寫完成, 請重新操作');
 
-		//若是新上傳的圖要進行搬移
+		//若是新上傳的圖要進行處裡
 		if($cover_state == 'new') {
-			$coverUploadPath = public_path("upload/files/$cover");
-			$coverStoragePath  = storage_path("app/public/images/product/$cover");
-			$r_renameCover = rename($coverUploadPath, $coverStoragePath);
-			if(!$r_renameCover) return  json_encode_return(0, '圖片處理失敗, 請重新操作', url()->route('admin::productContent', ['id' => $id]));
-		}
+            $coverName = uniqid().'.png';
+            base64toImage($cover, storage_path("app/public/images/product/$coverName"));
+		} else {
+		    $coverName = $cover;
+        }
 
 		$params = [
-			'name'  => $name,
-			'content' => $content,
-			'status' => $status,
-			'showcase' => $showcase,
-			'cover' => $cover,
-			'admin_id' => $user->id,
+			'name'      => $name,
+			'content'   => $content,
+			'status'    => $status,
+			'showcase'  => $showcase,
+			'cover'     => $coverName,
+			'admin_id'  => $user->id,
 		];
 
 		$result = 0;

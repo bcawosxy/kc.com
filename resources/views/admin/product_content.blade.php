@@ -50,11 +50,11 @@
                                         <div class="form-group">
                                             <label for="r1">
                                                 <input id="r1" type="radio" name="status" class="minimal-red" value="open" <?php if($data['product']['status'] == 'open' || $data['product']['status'] == '') echo 'checked'; ?>>
-                                                Open
+                                                &nbsp;開啟
                                             </label>&nbsp;&nbsp;&nbsp;
                                             <label for="r2">
                                                 <input id="r2" type="radio" name="status" class="minimal-red" value="close" <?php if($data['product']['status'] == 'close') echo 'checked'; ?>>
-                                                Close
+                                                &nbsp;關閉
                                             </label>
                                         </div>
                                     </dd>
@@ -64,11 +64,11 @@
                                         <div class="form-group">
                                             <label for="s1">
                                                 <input id="s1" type="radio" name="showcase" class="minimal-red" value="1" <?php if($data['product']['showcase']) echo 'checked'; ?>>
-                                                是
+                                                &nbsp;是
                                             </label>&nbsp;&nbsp;&nbsp;
                                             <label for="s2">
                                                 <input id="s2" type="radio" name="showcase" class="minimal-red" value="0" <?php if(!$data['product']['showcase']) echo 'checked'; ?>>
-                                                否
+                                                &nbsp;否
                                             </label>
                                         </div>
                                     </dd>
@@ -105,7 +105,7 @@
                                             <!-- The container for the uploaded files -->
                                             <div id="files" class="files"></div>
                                             <br>
-                                            <img style="width:350px;height: 320px;" id="cover" alt="{{$data['product']['cover'] or ''}}" src="{{$data['product']['coverUrl'] or ''}}"    onerror="this.src='{{asset('images/origin.png')}}'" data-state="old" class="img-responsive">
+                                            <img style="width:360px;height: 320px;" id="cover" alt="{{$data['product']['cover'] or ''}}" src="{{$data['product']['coverUrl'] or ''}}"    onerror="this.src='{{asset('images/origin.png')}}'" data-state="old" class="img-responsive">
                                         </div>
                                     </dd>
                                     <br>
@@ -122,10 +122,6 @@
                                     <dt>修改人員:</dt>
                                     <dd>
                                         <p class="text-light-blue">{{$data['product']['admin'] or ''}}</p>
-                                    </dd>
-                                    <br>
-                                    <dd>
-                                        <button id="pop">pop</button>
                                     </dd>
                                     <br>
                                 </dl>
@@ -167,7 +163,33 @@
                         $('#progress .progress-bar').css('width', '0%');
                     } else {
                         var target = '<?php echo URL('upload/files'); ?>/';
-                        $('#cover').attr({'alt': file.name, 'src': target + file.name}).data('state', 'new');
+                        $('#cover').data('state', 'new');
+
+                        //croppie
+                        swal({
+                            html : `<div style="width:1200px;height:820px;" id="demo"><div>`,
+                            confirmButtonText : '裁切',
+                            cancelButtonText : '<i class="fa fa-thumbs-down"></i>',
+                            width: 'auto',
+                            onOpen : function() {
+                                var cover = $('#demo').croppie({
+                                    url :  target + file.name,
+                                    viewport: { width: 360, height: 320 },
+                                    boundary: { width: 1080, height: 800 },
+                                });
+                                window.cover = cover;
+                            }
+                        }).then(function(){
+                            cover.croppie('result', {
+                                type : 'canvas',
+                                size : { width: 360, height: 320 },
+                                format : 'png',
+                            }).then(function (resp) {
+                                $('#cover').attr('src', resp);
+                            });
+
+                            $('#progress .progress-bar').css('width', '0%');
+                        });
                     }
                 });
             },
@@ -183,16 +205,16 @@
         });
 
         $('#save').on('click', function() {
-            var  [id, act, name, content, status, showcase, cover, cover_state] = [
+            var  [id, act, name, content, status, showcase, cover_state] = [
                     '{{ $data['product']['id'] or null}}',
                     '{{ $data['act'] }}',
                     $('input[name="name"]').val(),
                     CKEDITOR.instances['product_content'].getData(),
                     $('input[name="status"]:checked').val(),
                     $('input[name="showcase"]:checked').val(),
-                    $('#cover').attr('alt'),
                     $('#cover').data('state'),
-                ];
+                ],
+                cover = (cover_state == 'new') ? $('#cover').attr('src') : $('#cover').attr('alt') ;
 
             if(act == '' || name == '' || content == '' || status == '' ||  showcase == '' || cover == '') {
                 _swal({'status': 0, 'message': '資料未填寫完成, 請重新操作'});
@@ -257,19 +279,6 @@
             });
         });
 
-        $('#pop').on('click', function() {
-            var img = $('#cover').attr('src'),
-                html = `<div class="croppieDiv"></div>`;
-
-            swal({
-                html: html,
-                confirmButtonText : 'Great!',
-                cancelButtonText : '<i class="fa fa-thumbs-down"></i>',
-                width : '100%',
-                heigh : 'auto',
-            })
-
-        })
     });
 
 </script>
