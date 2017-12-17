@@ -39,6 +39,10 @@ Route::group(['prefix'=>'admin', 'as'=>'admin::'], function() {
 	Route::get('/showcase', ['as' => 'showcase', 'uses'=> 'AdminController@showcase']) ;
 	Route::post('/showcase/update', ['as' => 'showcaseupdate', 'uses'=> 'AdminController@showcaseUpdate']) ;
 
+    //聯絡資訊設定
+	Route::get('/info', ['as' => 'info', 'uses'=> 'AdminController@info']) ;
+	Route::post('/info/edit', ['uses'=> 'AdminController@infoEdit']) ;
+
 	//檔案上傳
 	Route::post('/fileUpload/', ['as' => 'fileUpload', 'uses'=> 'AdminController@fileUpload']) ;
 

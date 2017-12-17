@@ -84,6 +84,25 @@ class AdminController extends Controller
         return view('admin.index', ['data' => $data]);
     }
 
+    public function info()
+    {
+        $data = [];
+        $sysyem = Setting::getSetting('system');
+        if($sysyem) {
+            foreach ($sysyem as $k0 => $v0) {
+                $data[$v0['key']] = $sysyem[$k0];
+            }
+        }
+
+        $info = Setting::getSetting('info');
+        if($info) {
+            foreach ($info as $k0 => $v0) {
+                $data[$v0['key']] = $info[$k0];
+            }
+        }
+        return view('admin.info', ['data' => $data ]);
+    }
+
 	public function logout()
 	{
 		Auth::logout();
