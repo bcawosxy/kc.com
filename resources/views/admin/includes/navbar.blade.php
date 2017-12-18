@@ -3,34 +3,33 @@
         <ul class="sidebar-menu">
             <li class="header">後台首頁</li>
             <li>
-                <a href="{{url('admin')}}"><i class="fa fa-area-chart"></i> <span>首頁資訊</span></a>
+                <a href="{{url('admin')}}"><i class="fa fa-home"></i><span>  首頁資訊</span></a>
             </li>
         </ul>
 
         <ul class="sidebar-menu">
-            <li class="header">網站內容設定</li>
+            <li class="header">網站內容管理</li>
             <li>
                 <a href="{{url('admin/about')}}"><i class="fa fa-book"></i><span>關於{{config('app.name_CHT')}}</span></a>
             </li>
             <li>
-                <a href="{{url('admin/service')}}"><i class="fa fa-book"></i><span>服務項目管理</span></a>
+                <a href="{{url('admin/service')}}"><i class="fa fa-thumbs-o-up"></i><span>服務項目管理</span></a>
+            </li>
+            <li>
+                <a href="{{url('admin/info')}}"><i class="fa fa-legal"></i><span>資料設定</span></a>
+            </li>
+            <li>
+                <a href="{{url('admin/banner')}}"><i class="fa fa-sliders"></i><span>橫幅圖片設定</span></a>
             </li>
         </ul>
 
         <ul class="sidebar-menu">
             <li class="header">作品成果管理</li>
             <li>
-                <a href="{{url('admin/product')}}"><i class="fa fa-book"></i><span>作品管理</span></a>
+                <a href="{{url('admin/product')}}"><i class="fa fa-server"></i><span> 作品管理</span></a>
             </li>
             <li>
-                <a href="{{url('admin/showcase')}}"><i class="fa fa-book"></i><span>首頁展示設定</span></a>
-            </li>
-        </ul>
-
-        <ul class="sidebar-menu">
-            <li class="header">網站相關</li>
-            <li>
-                <a href="{{url('admin/info')}}"><i class="fa fa-book"></i><span>資料設定</span></a>
+                <a href="{{url('admin/showcase')}}"><i class="fa fa-sliders"></i><span>作品展示設定</span></a>
             </li>
         </ul>
 

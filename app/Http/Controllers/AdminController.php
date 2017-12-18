@@ -50,6 +50,13 @@ class AdminController extends Controller
 		return json_encode_return($result, $message, $redirect );
 	}
 
+	public function banner() {
+
+	    $data = [];
+
+	    return view('admin.banner', ['data' => $data]);
+    }
+
 	public function fileUpload()
 	{
 		$options = array(

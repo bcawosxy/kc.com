@@ -16,7 +16,7 @@
     <section class="content" style="min-height:180px;">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">網頁標籤(title) 及 描述(description)</h3>
+                <h3 class="box-title">網頁標籤(title) / 描述(description)</h3>
                 <h4>
                     <small><p class="text-light-blue">(網站標題及描述)</p></small>
                 </h4>
@@ -35,7 +35,7 @@
     <section class="content" style="min-height:180px;">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">網站logo 及 icon</h3>
+                <h3 class="box-title">網站Logo / Icon</h3>
             </div>
             <div class="box-body">
 

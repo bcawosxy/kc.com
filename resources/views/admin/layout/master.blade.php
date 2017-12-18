@@ -27,7 +27,6 @@
 
     <link rel="stylesheet" href="{{ URL::asset('js/admin/croppie/croppie.min.css')}}">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -77,6 +76,7 @@
     <script src="{{ URL::asset('adminlte/plugins/highcharts/js/exporting.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/plugins/highcharts/js/sand-signika.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('js/admin/croppie/croppie.min.js')}}" type="text/javascript"></script>
+
     @show
 <script>
     function _swal(r) {

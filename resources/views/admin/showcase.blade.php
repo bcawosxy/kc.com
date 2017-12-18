@@ -2,11 +2,15 @@
 
 @section('content')
 <div class="content-wrapper" style="height: auto;">
+    <section class="content-header">
+        <div class="box-body"><h2>首頁 - 作品展示排列預覽</h2></div>
+        <ol class="breadcrumb">
+            <li><a href="{{url()->route('admin::index')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">作品展示排列預覽</li>
+        </ol>
+    </section>
     <section class="content">
         <div class="box">
-            <div class="box-header with-border">
-                <h3> 首頁 - 作品展示排列預覽 </h3>
-            </div>
             <div class="box-body">
                 <div style="height: 90px;">
                     <div id="alert_w" class="callout callout-warning">
