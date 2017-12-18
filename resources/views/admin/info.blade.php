@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="content-wrapper" style="height: auto;">
+    <!-- top -->
     <section class="content-header">
         <div class="box-body"><h2>系統參數設定</h2></div>
         <ol class="breadcrumb">
@@ -9,23 +10,70 @@
             <li class="active">系統參數設定</li>
         </ol>
     </section>
+    <!-- //top -->
+
+    <!-- meta setting -->
     <section class="content" style="min-height:180px;">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Title 及 Description</h3>
+                <h3 class="box-title">網頁標籤(title) 及 描述(description)</h3>
                 <h4>
                     <small><p class="text-light-blue">(網站標題及描述)</p></small>
                 </h4>
             </div>
             <div class="box-body">
                 <label>Title</label> :
-                <input class="form-control" maxlength="30" data-code="system" name="title" style="max-width:500px;" type="text" placeholder="Text" value="{{$data['title']['value']}}"><br>
+                <input class="form-control" maxlength="16" data-code="system" name="title" style="max-width:500px;" type="text" placeholder="Text" value="{{$data['title']['value']}}"><br>
                 <label>Description</label> :
                 <input class="form-control" maxlength="50" data-code="system" name="description" style="max-width:500px;" type="text" placeholder="Description" value="{{$data['description']['value']}}">
             </div>
         </div>
     </section>
+    <!-- //meta setting -->
 
+    <!-- logo & icon -->
+    <section class="content" style="min-height:180px;">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">網站logo 及 icon</h3>
+            </div>
+            <div class="box-body">
+
+                <div class="form-group">
+                    <label>Logo</label> : &nbsp;&nbsp;
+                    <span class="btn btn-success fileinput-button fileupload" name="logo">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span >Select files</span>
+                    </span>
+                    <br><br>
+                    <img name="logo" src="{{ url()->asset('images/').DIRECTORY_SEPARATOR.$data['logo']['value'] }}"  onerror="this.src='{{asset('images/origin.png')}}'" data-state="old" data-code="system" class="img-responsive">
+                </div>
+
+                <div class="form-group">
+                    <label>Icon</label> : &nbsp;&nbsp;
+                    <span class="btn btn-success fileinput-button fileupload" name="icon">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>Select files</span>
+                    </span>
+                    <br><br>
+                    <img name="icon" src="{{ url()->asset('images/').DIRECTORY_SEPARATOR.$data['icon']['value'] }}"  onerror="this.src='{{asset('images/origin.png')}}'" data-state="old" data-code="system" class="img-responsive">
+                </div>
+
+                <div class="form-group">
+                    <input id="fileupload" type="file" name="files[]" multiple style="display: none;" data-code="">
+                    <!-- The global progress bar -->
+                    <div id="progress" class="progress">
+                        <div class="progress-bar progress-bar-success"></div>
+                    </div>
+                    <!-- The container for the uploaded files -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- //logo & icon -->
+
+    <!-- info -->
     <section class="content" style="min-height:180px;">
         <div class="box">
             <div class="box-header with-border">
@@ -35,12 +83,21 @@
                 </h4>
             </div>
             <div class="box-body">
+
                 <label>Phone</label> :
                 <div class="input-group">
                     <div class="input-group-addon">
                         <i class="fa fa-phone"></i>
                     </div>
                     <input type="text" class="form-control" data-code="info" name="telephone" style="max-width:465px;" value="{{$data['telephone']['value']}}">
+                </div>
+
+                <label>FAX</label> :
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-fax"></i>
+                    </div>
+                    <input type="text" class="form-control" data-code="info" name="fax" style="max-width:465px;" value="{{$data['fax']['value']}}">
                 </div>
 
                 <label>Email</label> :
@@ -58,9 +115,12 @@
                     </div>
                     <input type="text" class="form-control" data-code="info" name="address" style="max-width:465px;" value="{{$data['address']['value']}}">
                 </div>
+
             </div>
         </div>
     </section>
+    <!-- //info -->
+
     <a class="btn btn-app " id="save">
         <i class="fa fa-save"></i> Save All
     </a>
@@ -71,27 +131,52 @@
     @parent
 <script type="text/javascript">
     $(function () {
+        $('.fileupload').on('click', function(){
+           $('#fileupload').data('usefor', $(this).attr('name')).trigger('click');
+        });
+
+        $('#fileupload').fileupload({
+            url: "{{ url()->route('admin::fileUpload')  }}",
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            done: function (e, data) {
+                $.each(data.result.files, function (index, file) {
+                    if( file.error ) {
+                        _swal({'status': 0, 'message': file.error});
+                        $('#progress .progress-bar').css('width', '0%');
+                    } else {
+                        var target = '<?php echo URL('upload/files'); ?>/';
+                        $('img[name="'+ $('#fileupload').data('usefor') + '"]').attr({'alt' : file.name, 'src' : target+file.name}).data('state', 'new');
+                    }
+                });
+            },
+            progressall: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress .progress-bar').css('width', progress + '%');
+            }
+        }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
+
 
         $('#save').on('click', function() {
-            var code, data = [];
+            var data = [], images = [];
             $('input[data-code!=""]').each(function(k ,v){
-                code = $(v).data('code');
-                data[code].push('1');
-            })
+                data.push({'code' : $(v).data('code'), 'key' : $(v).attr('name'), 'value' : $(v).val()});
+            });
 
-            console.log(data);
-                return;
+            $('img[data-code!=""]').each(function(k ,v){
+                if($(v).data('state') == 'new') {
+                    images.push({'code' : $(v).data('code'), 'key' : $(v).attr('name'), 'value' : $(v).attr('alt')});
+                }
+            });
+
             $.ajax({
                 url : '{{url("admin/info/edit")}}',
                 type: 'post',
                 data: {
-                    web_title : $(':input[name="web_title"]').val(),
-                    web_description : $(':input[name="web_description"]').val(),
-                    office_info_phone : $(':input[name="office_info_phone"]').val(),
-                    office_info_email : $(':input[name="office_info_email"]').val(),
-                    r1 : $('input[name=r1]:checked').val(),
-                    r2 : $('input[name=r2]:checked').val(),
-                    r3 : $('input[name=r3]:checked').val(),
+                    data : JSON.stringify(data),
+                    images : JSON.stringify(images),
                 },
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -105,8 +190,7 @@
                     _swal(r);
                 },
             });
-
-        })
+        });
     });
 </script>
 @endsection

@@ -103,6 +103,47 @@ class AdminController extends Controller
         return view('admin.info', ['data' => $data ]);
     }
 
+	public function infoEdit(Request $request)
+	{
+		$user = Auth::user();
+		$data = $request->data;
+		$images = $request->images;
+
+		$result = 1;
+		$message = '修改完成';
+		$redirect = url()->route('admin::info');
+
+		/**
+		 *  網頁描述及聯絡資訊欄位
+		 */
+		foreach (json_decode($data , true) as $k0 => $v0) {
+			if(!Setting::where(['code' => $v0['code'], 'key' => $v0['key']])->update(['value'=> $v0['value'], 'admin_id' => $user->id])){
+				$result = 0;
+				$message = '修改失敗, 請重新操作';
+				goto _return;
+			}
+		}
+
+		/**
+		 *  Logo & Icon 欄位
+		 */
+		foreach (json_decode($images , true) as $k0 => $v0) {
+			$UploadPath = public_path("upload/files/").DIRECTORY_SEPARATOR.$v0['value'];
+			$StoragePath  = public_path("images/").DIRECTORY_SEPARATOR.$v0['key'].'.png';
+
+			if(!rename($UploadPath, $StoragePath)){
+				$result = 0;
+				$message = '['.$v0['key'].']圖片移動失敗, 請重新操作';
+				goto _return;
+			} else {
+				$message = '修改完成, 請按下 Ctrl + F5 更新圖片。';
+			}
+		}
+
+		_return :
+		return json_encode_return($result, $message, $redirect);
+    }
+
 	public function logout()
 	{
 		Auth::logout();
@@ -219,10 +260,8 @@ class AdminController extends Controller
 				$redirect = url()->route('admin::product');
 			}
 		} else {
-            if( $showcase == 0 ) {
-               if(!Showcase::where('product_id', $id)->delete() ) {
-                    goto _return;
-               }
+            if( $showcase == 0 || $status == 'close') {
+               Showcase::where('product_id', $id)->delete();
             }
 
 			if (Product::where('id', $id)->update($params)) {

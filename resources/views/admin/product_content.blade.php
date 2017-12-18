@@ -150,6 +150,7 @@
 <script type="text/javascript">
     $(function () {
         'use strict';
+
         $('#fileupload').fileupload({
             url: "{{ url()->route('admin::fileUpload')  }}",
             dataType: 'json',
@@ -167,7 +168,7 @@
 
                         //croppie
                         swal({
-                            html : `<div style="width:1200px;height:820px;" id="demo"><div>`,
+                            html : `<div style="width:1060px;height:760px;" id="demo"><div>`,
                             confirmButtonText : '裁切',
                             cancelButtonText : '<i class="fa fa-thumbs-down"></i>',
                             width: 'auto',
@@ -175,7 +176,7 @@
                                 var cover = $('#demo').croppie({
                                     url :  target + file.name,
                                     viewport: { width: 360, height: 320 },
-                                    boundary: { width: 1080, height: 800 },
+                                    boundary: { width: 960, height: 720 },
                                 });
                                 window.cover = cover;
                             }

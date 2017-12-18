@@ -28,9 +28,9 @@
         </ul>
 
         <ul class="sidebar-menu">
-            <li class="header">聯絡資訊設定</li>
+            <li class="header">網站相關</li>
             <li>
-                <a href="{{url('admin/info')}}"><i class="fa fa-book"></i><span>聯絡資訊</span></a>
+                <a href="{{url('admin/info')}}"><i class="fa fa-book"></i><span>資料設定</span></a>
             </li>
         </ul>
 
