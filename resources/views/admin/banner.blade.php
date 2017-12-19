@@ -18,7 +18,6 @@
             text-align:center;
             margin: 3px 3px 40px 0;
         }
-
     </style>
 <div class="content-wrapper" style="height: auto;">
     <section class="content-header">
@@ -28,7 +27,6 @@
             <li>Banner橫幅圖</li>
         </ol>
     </section>
-
     <section class="content">
         <div class="box">
             <div class="box-body">
@@ -41,7 +39,7 @@
                 </div>
                 <div class="row">
                     <dl class="dl-horizontal">
-                        <dt>上傳Banner:</dt>
+                        <dt>上傳:</dt>
                         <dd>
                             <div class="form-group" style="width:98%;">
                                 <!-- The fileinput-button span is used to style the file input field as button -->
@@ -59,18 +57,22 @@
                             </div>
                         </dd>
                         <br>
-                        <dt>Banner燈箱:</dt>
+                        <dt>Banner:</dt>
                         <dd>
                             <div class="form-group">
                                 <ul id="sortable">
-                                    <li class="ui-state-default ui-sortable-handle" data-set="old" data-filename="5a38db9bdfbba.jpg">
-                                        <a href="javascript:void(0)" data-gallery="">
-                                            <img style="width:100%" src="http://dev.kc.com/upload/files/5a38db9bdfbba.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <button type="button" style="padding:0;margin-top:5px;" class="btn btn-block btn-danger box_delete">移除</button>
-                                        </a>
-                                    </li>
+                                    <?php
+                                        foreach ($data['banners'] as $k0 => $v0) {
+                                            echo ' <li class="ui-state-default ui-sortable-handle" data-set="old" data-filename="'.$v0['name'].'">
+                                                <a href="javascript:void(0)">
+                                                    <img style="width:100%" src="'.$v0['url'].'">
+                                                </a>
+                                                <a href="javascript:void(0)">
+                                                    <button type="button" style="padding:0;margin-top:5px;" class="btn btn-block btn-danger box_delete">移除</button>
+                                                </a>
+                                            </li>';
+                                        }
+                                    ?>
                                 </ul>
                             </div>
                         </dd>
@@ -104,7 +106,6 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             done: function (e, data) {
-                console.log(data);
                 $.each(data.result.files, function (index, file) {
                     if( file.error ) {
                         _swal({'status': 0, 'message': file.error});
@@ -154,13 +155,11 @@
                     },
                     dataType: 'json',
                     success: function (r) {
-//                    $('#alert_w').hide().removeClass('callout-warning').addClass('callout-success')
-//
-//                    setTimeout(function(){
-//                        $('#alert_w').show().find('p').html('首頁成果排序更新完成');
-//                    }, 100);
+                        _swal(r);
                     },
                     error : function (r) {
+                        r = r.responseJSON;
+                        _swal(r);
                     },
 
                 });

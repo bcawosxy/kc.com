@@ -52,29 +52,53 @@ class AdminController extends Controller
 
 	public function banner() {
 
-	    $data = [];
+	    $banner = Setting::getSetting('system', 'banner');
+        $banners =[];
+	    foreach (json_decode($banner['value'], true) as $k0 => $v0) {
+	        $banners[] = [
+	            'name'  => $v0,
+                'url'   => url()->asset("storage/images/banner/").DIRECTORY_SEPARATOR.$v0,
+            ];
+        }
+
+	    $data = [
+	        'banners' => $banners,
+        ];
 
 	    return view('admin.banner', ['data' => $data]);
     }
 
 	public function bannerEdit(Request $request)
 	{
+        $user = Auth::user();
+        $oldImages = []; $newImages = [];
 		$images = $request->images;
 		$uploadPath = public_path("upload/files/").DIRECTORY_SEPARATOR;
 		$storagePath  = public_path("storage/images/banner/").DIRECTORY_SEPARATOR;
 
 		foreach ($images as $k0 => $v0) {
-			if($v0['set']) $oldImage[] = $v0['filename'];
+			if($v0['set'] == 'old') $oldImages[] = $v0['filename'];
+			if($v0['set'] == 'new') $newImages[] = $v0['filename'];
+			$allImages[] = $v0['filename'];
 		}
 
+		//先將banner目錄中不在本次使用的舊圖片移除, 保留重複使用的圖片
 		foreach (glob($storagePath."*.jpg") as $filename) {
-
-//			if(!in_array( $filename , $oldImage)) echo $filename;
+            $fileinfo = pathinfo($filename);
+            $_file = $fileinfo['filename'].'.'.$fileinfo['extension'];
+			if(!in_array( $_file , $oldImages)) unlink($filename);
 		}
 
-//		foreach ($images as $k0 => $v0) {
-//			rename( $uploadPath.$v0['filename'] , $storagePath.$v0['filename']);
-//		}
+		//搬新圖片到目錄內
+		foreach ($newImages as $k0 => $v0) {
+			rename( $uploadPath.$v0 , $storagePath.$v0);
+		}
+
+		$result = Setting::updateSetting('system', 'banner', json_encode($allImages), $user->id);
+        $redirect = url()->route('admin::banner');
+        $message = ($result) ? '修改完成' :  '修改失敗, 請重新操作' ;
+
+        return json_encode_return($result, $message, $redirect );
     }
 
 	public function fileUpload()

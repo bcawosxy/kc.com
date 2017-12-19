@@ -19,4 +19,12 @@ class Setting extends Model
 
         return json_decode($return, true);
     }
+
+    static public function updateSetting($code , $key, $value, $user_id)
+    {
+        $return = Setting::where(['code' => $code, 'key' => $key])->update(['value'=> $value, 'admin_id' => $user_id]);
+
+        return $return;
+    }
+
 }
