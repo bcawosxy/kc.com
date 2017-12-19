@@ -5,7 +5,7 @@
     <script src="{{ URL::asset('js/admin/ckfinder/ckfinder.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('js/admin/ckeditor/adapters/jquery.js')}}" type="text/javascript"></script>
 
-    <div class="content-wrapper" style="height: auto;">
+<div class="content-wrapper" style="height: auto;">
     <section class="content-header">
         <div class="box-body"><h2>關於 - 凱詮金屬有限公司</h2></div>
         <h1>
@@ -20,7 +20,7 @@
         <div class="box">
             <div class="box-body">
                 <form method="POST">
-                    <textarea  id="about_value" name="about_value" class="ckeditor">{{$data['value']}}</textarea>
+                    <textarea  id="about_value" name="about_value" class="ckeditor">{{$data['value'] or ''}}</textarea>
                     <script type="text/javascript">
                         var content = CKEDITOR.replace('about_value',
                             {
@@ -37,7 +37,7 @@
                 </form>
             </div>
             <div class="box-footer">
-                最後修改時間<p class="text-light-blue">{{$data['updated_at']}}</p>修改人員<p class="text-light-blue">{{$data['admin']['name']}}</p>
+                最後修改時間<p class="text-light-blue">{{$data['updated_at'] or ''}}</p>修改人員<p class="text-light-blue">{{$data['admin']['name'] or ''}}</p>
             </div>
         </div>
     </section>

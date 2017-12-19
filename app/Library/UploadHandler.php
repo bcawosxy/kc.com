@@ -1049,9 +1049,10 @@ class UploadHandler
             $index = null, $content_range = null) {
         $file = new \stdClass();
         $file->name = $this->get_file_name($uploaded_file, $name, $size, $type, $error, $index, $content_range);
-        /**
-         * 自定義檔案名稱
-         */
+
+		/**
+		 *  自定義檔案名稱
+		 */
         $ext = pathinfo($file->name, PATHINFO_EXTENSION);
         $file->name = uniqid().'.'.$ext;
         $file->size = $this->fix_integer_overflow((int)$size);

@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input id="fileupload" type="file" name="files[]" multiple style="display: none;" data-code="">
+                    <input id="fileupload" type="file" name="files[]" style="display: none;" data-code="">
                     <!-- The global progress bar -->
                     <div id="progress" class="progress">
                         <div class="progress-bar progress-bar-success"></div>

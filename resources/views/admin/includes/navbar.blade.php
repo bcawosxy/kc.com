@@ -16,10 +16,10 @@
                 <a href="{{url('admin/service')}}"><i class="fa fa-thumbs-o-up"></i><span>服務項目管理</span></a>
             </li>
             <li>
-                <a href="{{url('admin/info')}}"><i class="fa fa-legal"></i><span>資料設定</span></a>
+                <a href="{{url('admin/banner')}}"><i class="fa fa-sliders"></i><span>橫幅圖片設定</span></a>
             </li>
             <li>
-                <a href="{{url('admin/banner')}}"><i class="fa fa-sliders"></i><span>橫幅圖片設定</span></a>
+                <a href="{{url('admin/info')}}"><i class="fa fa-legal"></i><span>資料設定</span></a>
             </li>
         </ul>
 

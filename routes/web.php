@@ -45,7 +45,7 @@ Route::group(['prefix'=>'admin', 'as'=>'admin::'], function() {
 
     //橫幅圖片
 	Route::get('/banner', ['as' => 'banner', 'uses'=> 'AdminController@banner']) ;
-//	Route::post('/info/edit', ['uses'=> 'AdminController@infoEdit']) ;
+	Route::post('/banner/update', ['as' => 'bannerupdate','uses'=> 'AdminController@bannerEdit']) ;
 
 	//檔案上傳
 	Route::post('/fileUpload/', ['as' => 'fileUpload', 'uses'=> 'AdminController@fileUpload']) ;

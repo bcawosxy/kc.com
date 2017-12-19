@@ -95,16 +95,13 @@
                                                 <i class="glyphicon glyphicon-plus"></i>
                                                 <span>Select files...</span>
                                                 <!-- The file input field used as target for the file upload widget -->
-                                                <input id="fileupload" type="file" name="files[]" multiple>
+                                                <input id="fileupload" type="file" name="files[]">
                                             </span>
                                             <br><br>
                                             <!-- The global progress bar -->
                                             <div id="progress" class="progress">
                                                 <div class="progress-bar progress-bar-success"></div>
                                             </div>
-                                            <!-- The container for the uploaded files -->
-                                            <div id="files" class="files"></div>
-                                            <br>
                                             <img style="width:360px;height: 320px;" id="cover" alt="{{$data['product']['cover'] or ''}}" src="{{$data['product']['coverUrl'] or ''}}"    onerror="this.src='{{asset('images/origin.png')}}'" data-state="old" class="img-responsive">
                                         </div>
                                     </dd>

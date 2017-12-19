@@ -57,6 +57,26 @@ class AdminController extends Controller
 	    return view('admin.banner', ['data' => $data]);
     }
 
+	public function bannerEdit(Request $request)
+	{
+		$images = $request->images;
+		$uploadPath = public_path("upload/files/").DIRECTORY_SEPARATOR;
+		$storagePath  = public_path("storage/images/banner/").DIRECTORY_SEPARATOR;
+
+		foreach ($images as $k0 => $v0) {
+			if($v0['set']) $oldImage[] = $v0['filename'];
+		}
+
+		foreach (glob($storagePath."*.jpg") as $filename) {
+
+//			if(!in_array( $filename , $oldImage)) echo $filename;
+		}
+
+//		foreach ($images as $k0 => $v0) {
+//			rename( $uploadPath.$v0['filename'] , $storagePath.$v0['filename']);
+//		}
+    }
+
 	public function fileUpload()
 	{
 		$options = array(
