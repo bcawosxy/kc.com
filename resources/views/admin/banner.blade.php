@@ -97,7 +97,7 @@
     @parent
     <script>
         'use strict';
-        var target = '<?php echo URL('upload/files'); ?>/', item;
+        var target = '<?php echo URL('upload/files'); ?>/', item, _URL = window.URL || window.webkitURL ;
 
         $('#fileupload').fileupload({
             url: "{{ url()->route('admin::fileUpload')  }}",
@@ -105,7 +105,22 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            done: function (e, data) {
+            done : function (e, data) {
+                var file = data.files[0],
+                    img = new Image(),
+                    imgwidth = 0,
+                    imgheight = 0,
+                    maxwidth = 640,
+                    maxheight = 640;
+
+                img.src = _URL.createObjectURL(file);
+                img.onload = function () {
+                    imgwidth = this.width;
+                    imgheight = this.height;
+
+                    alert(imgwidth+'/'+imgheight);
+                }
+
                 $.each(data.result.files, function (index, file) {
                     if( file.error ) {
                         _swal({'status': 0, 'message': file.error});
