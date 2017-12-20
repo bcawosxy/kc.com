@@ -13,8 +13,8 @@
         <div class="box">
             <div class="box-body">
                 <div style="height: 90px;">
-                    <div id="alert_w" class="callout callout-warning">
-                        <p>在 <a href="{{url()->route('admin::product')}}">作品管理</a> 設定該作品可做 "首頁展示" 才能在此進行排列</p>
+                    <div id="alert_w" class="callout">
+                        <p>在 <a style="color:#3c8dbc;" href="{{url()->route('admin::product')}}">作品管理</a> 設定該作品可做 "首頁展示" 才能在此進行排列</p>
                     </div>
                 </div>
                 <div class="col-md-12">

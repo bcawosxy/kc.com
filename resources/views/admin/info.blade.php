@@ -38,7 +38,6 @@
                 <h3 class="box-title">網站Logo / Icon</h3>
             </div>
             <div class="box-body">
-
                 <div class="form-group">
                     <label>Logo</label> : &nbsp;&nbsp;
                     <span class="btn btn-success fileinput-button fileupload" name="logo">
@@ -79,7 +78,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title">聯絡資料</h3>
                 <h4>
-                    <small><p class="text-light-blue">(Contact頁面中的聯絡資料)</p></small>
+                    <small><p class="text-light-blue">(公司聯絡資料)</p></small>
                 </h4>
             </div>
             <div class="box-body">

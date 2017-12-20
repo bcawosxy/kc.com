@@ -31,7 +31,7 @@
         <div class="box">
             <div class="box-body">
                 <div style="height: auto">
-                    <div id="alert_w" class="callout callout-warning">
+                    <div id="alert_w" class="callout">
                         <p>拖曳圖片改變順序</p>
                         <p>圖片格式: JPG / JPEG / PNG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;檔案大小: 5MB</p>
                         <p>圖片尺寸: 980 * 490</p>
@@ -63,7 +63,8 @@
                                 <ul id="sortable">
                                     <?php
                                         foreach ($data['banners'] as $k0 => $v0) {
-                                            echo ' <li class="ui-state-default ui-sortable-handle" data-set="old" data-filename="'.$v0['name'].'">
+                                            echo '<li class="ui-state-default ui-sortable-handle" data-set="old" data-filename="'.$v0['name'].'">
+                                                <p data-filename="'.$v0['name'].'"><span class="caret"></span></p>
                                                 <a href="javascript:void(0)">
                                                     <img style="width:100%" src="'.$v0['url'].'">
                                                 </a>
@@ -82,7 +83,6 @@
             </div>
         </div>
     </section>
-
     <a class="btn btn-app" href="{{url()->route('admin::banner')}}">
         <i class="fa fa-angle-double-left"></i> 上一頁
     </a>
@@ -97,7 +97,7 @@
     @parent
     <script>
         'use strict';
-        var target = '<?php echo URL('upload/files'); ?>/', item, _URL = window.URL || window.webkitURL ;
+        var target = '<?php echo URL('upload/files'); ?>/', item, _URL = window.URL || window.webkitURL;
 
         $('#fileupload').fileupload({
             url: "{{ url()->route('admin::fileUpload')  }}",
@@ -106,27 +106,14 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             done : function (e, data) {
-                var file = data.files[0],
-                    img = new Image(),
-                    imgwidth = 0,
-                    imgheight = 0,
-                    maxwidth = 640,
-                    maxheight = 640;
-
-                img.src = _URL.createObjectURL(file);
-                img.onload = function () {
-                    imgwidth = this.width;
-                    imgheight = this.height;
-
-                    alert(imgwidth+'/'+imgheight);
-                }
-
                 $.each(data.result.files, function (index, file) {
                     if( file.error ) {
                         _swal({'status': 0, 'message': file.error});
                         $('#progress .progress-bar').css('width', '0%');
                     } else {
-                         item = `<li class="ui-state-default ui-sortable-handle" data-set="new" data-filename="${file.name}">
+                        console.log(file);
+                         item = `<li class="" data-set="new" data-filename="${file.name}">
+                                <p data-filename="${file.name}"></p>
                                 <a href="javascript:void(0)" data-gallery="">
                                     <img style="width:100%" src="${target  + file.name}">
                                 </a>
@@ -139,8 +126,21 @@
                        setTimeout(function(){
                            $('#progress .progress-bar').css('width', '0%');
                        }, 1000);
+
                     }
                 });
+
+                var img = new Image(),
+                    imgwidth = 0,
+                    imgheight = 0;
+
+                img.src = _URL.createObjectURL( data.files[0]);
+                img.onload = function () {
+                    imgwidth = this.width;
+                    imgheight = this.height;
+                    $('p[data-filename="'+data.result.files[0].name+'"]').html('<span class="caret"></span>  ' + imgwidth + ' x ' + imgheight);
+                }
+
             },
             progressall: function (e, data) {
                 var progress = parseInt(data.loaded / data.total * 100, 10);

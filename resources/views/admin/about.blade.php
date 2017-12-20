@@ -8,9 +8,6 @@
 <div class="content-wrapper" style="height: auto;">
     <section class="content-header">
         <div class="box-body"><h2>關於 - 凱詮金屬有限公司</h2></div>
-        <h1>
-            <small><p class="text-light-blue">(建議上傳圖片格式: PNG / JPEG / JPG)</p></small>
-        </h1>
         <ol class="breadcrumb">
             <li><a href=" {{ url()->route('admin::index')  }} "><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">關於 - 凱詮金屬有限公司</li>
@@ -19,6 +16,11 @@
     <section class="content">
         <div class="box">
             <div class="box-body">
+                <div style="height: auto">
+                    <div id="alert_w" class="callout">
+                        <p>(建議上傳圖片格式: PNG / JPEG / JPG)</p>
+                    </div>
+                </div>
                 <form method="POST">
                     <textarea  id="about_value" name="about_value" class="ckeditor">{{$data['value'] or ''}}</textarea>
                     <script type="text/javascript">

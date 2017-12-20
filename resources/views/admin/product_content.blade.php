@@ -14,9 +14,6 @@
     <div class="content-wrapper" style="height: auto;">
     <section class="content-header">
         <div class="box-body"><h2>作品管理</h2></div>
-        <h1>
-            <small><p class="text-light-blue"></p></small>
-        </h1>
         <ol class="breadcrumb">
             <li><a href="{{ url()->route('admin::index')}}"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="{{ url()->route('admin::product')}}"> 作品管理</a></li>
