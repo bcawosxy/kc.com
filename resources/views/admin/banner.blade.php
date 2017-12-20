@@ -111,7 +111,6 @@
                         _swal({'status': 0, 'message': file.error});
                         $('#progress .progress-bar').css('width', '0%');
                     } else {
-                        console.log(file);
                          item = `<li class="" data-set="new" data-filename="${file.name}">
                                 <p data-filename="${file.name}"></p>
                                 <a href="javascript:void(0)" data-gallery="">
