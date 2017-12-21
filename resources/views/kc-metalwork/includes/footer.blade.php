@@ -2,16 +2,16 @@
     <div class="row">
 
         <div class="col-md-3 col-sm-3">
-            <img src="{{$data['icon']}}">
+            <img src="{{$icon}}">
         </div>
 
         <div class="col-md-4 col-sm-4">
-            <p>{{$data['info']['address']}}</p>
+            <p>{{$info['address']}}</p>
         </div>
 
         <div class="col-md-offset-1 col-md-4 col-sm-offset-1 col-sm-3">
-            <p><a href="mailto:{{$data['info']['email']}}">{{$data['info']['email']}}</a></p>
-            <p>{{$data['info']['telephone']}}</p>
+            <p><a href="mailto:{{$info['email']}}">{{$info['email']}}</a></p>
+            <p>{{$info['telephone']}}</p>
         </div>
 
         <div class="clearfix col-md-12 col-sm-12">

@@ -92,7 +92,7 @@
                                                 <i class="glyphicon glyphicon-plus"></i>
                                                 <span>Select files...</span>
                                                 <!-- The file input field used as target for the file upload widget -->
-                                                <input id="fileupload" type="file" name="files[]">
+                                                <input id="fileupload" type="file" name="files[]" accept="image/png,image/jpg,image/jpeg">
                                             </span>
                                             <br><br>
                                             <!-- The global progress bar -->

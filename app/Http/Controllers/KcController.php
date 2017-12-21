@@ -12,6 +12,20 @@ use Illuminate\Routing\Controller;
 
 class KcController extends Controller
 {
+    public function about() {
+        $data = [];
+        $about = Setting::getSetting('about', 'content');
+
+        if($about) {
+            $data = [
+                'value' => ($about['value']) ? $about['value'] : null,
+                'updated_at' => ($about['updated_at']) ? $about['updated_at'] : null,
+            ];
+        }
+
+        return view('kc-metalwork.about', ['data' => $data]);
+    }
+
 	public function index($page = 1)
 	{
 		$data = [];
@@ -55,16 +69,6 @@ class KcController extends Controller
 			];
 		}
 		$data['showcase'] = $showcase;
-
-		//info
-		$e_info = Setting::getSetting('info');
-		$info = [];
-		foreach ($e_info as $k0 => $v0) {
-			$info[$v0['key']] = $v0['value'];
-		}
-		$data['info'] = $info;
-
-		$data['icon'] = url()->asset("/images") . DIRECTORY_SEPARATOR . 'icon.png';
 
 		return view('kc-metalwork.index', ['data' => $data]);
 	}
