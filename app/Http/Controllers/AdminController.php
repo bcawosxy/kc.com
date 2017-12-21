@@ -55,10 +55,14 @@ class AdminController extends Controller
 	    $banner = Setting::getSetting('system', 'banner');
         $banners =[];
 	    foreach (json_decode($banner['value'], true) as $k0 => $v0) {
-	        $banners[] = [
-	            'name'  => $v0,
-                'url'   => url()->asset("storage/images/banner/").DIRECTORY_SEPARATOR.$v0,
-            ];
+			if(file_exists(public_path("storage/images/banner/").DIRECTORY_SEPARATOR.$v0)) {
+				$imagesize = getimagesize(public_path("storage/images/banner/") . DIRECTORY_SEPARATOR . $v0);
+				$banners[] = [
+					'name' => $v0,
+					'url' => url()->asset("storage/images/banner/") . DIRECTORY_SEPARATOR . $v0,
+					'size' => $imagesize[0] . ' x ' . $imagesize[1],
+				];
+			}
         }
 
 	    $data = [
@@ -104,8 +108,6 @@ class AdminController extends Controller
 	public function fileUpload()
 	{
 		$options = array(
-			// This option will disable creating thumbnail images and will not create that extra folder.
-			// However, due to this, the images preview will not be displayed after upload
 			'image_versions' => [],
 		);
 		$upload = new UploadHandler($options);

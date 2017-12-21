@@ -26,7 +26,7 @@ class UploadHandler
         8 => 'A PHP extension stopped the file upload',
         'post_max_size' => 'The uploaded file exceeds the post_max_size directive in php.ini',
 //        'max_file_size' => 'File is too big',
-        'max_file_size' => '檔案超過5MB',
+        'max_file_size' => '檔案超過16MB',
         'min_file_size' => 'File is too small',
         'accept_file_types' => 'Filetype not allowed',
         'max_number_of_files' => 'Maximum number of files exceeded',
@@ -86,7 +86,7 @@ class UploadHandler
             'accept_file_types' => '/(\.|\/)(jpe?g|png)$/i',
             // The php.ini settings upload_max_filesize and post_max_size
             // take precedence over the following max_file_size setting:
-            'max_file_size' => 5242880,
+            'max_file_size' => 16777216,
             'min_file_size' => 1,
             // The maximum number of files for the upload directory:
             'max_number_of_files' => null,

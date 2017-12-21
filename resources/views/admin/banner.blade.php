@@ -16,7 +16,12 @@
             height:100px;
             font-size:0.5em;
             text-align:center;
-            margin: 3px 3px 40px 0;
+            cursor: move;
+            margin: 2% 3px 40px 0;
+        }
+
+        #sortable>li>a {
+            cursor: move;
         }
     </style>
 <div class="content-wrapper" style="height: auto;">
@@ -32,9 +37,9 @@
             <div class="box-body">
                 <div style="height: auto">
                     <div id="alert_w" class="callout">
-                        <p>拖曳圖片改變順序</p>
-                        <p>圖片格式: JPG / JPEG / PNG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;檔案大小: 5MB</p>
-                        <p>圖片尺寸: 980 * 490</p>
+                        <p class="text-red">※ 拖曳圖片改變順序</p>
+                        <p>圖片格式 : JPG / JPEG / PNG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;檔案大小: 16MB</p>
+                        <p>圖片尺寸 : 980 * 490</p>
                     </div>
                 </div>
                 <div class="row">
@@ -64,7 +69,7 @@
                                     <?php
                                         foreach ($data['banners'] as $k0 => $v0) {
                                             echo '<li class="ui-state-default ui-sortable-handle" data-set="old" data-filename="'.$v0['name'].'">
-                                                <p data-filename="'.$v0['name'].'"><span class="caret"></span></p>
+                                                <p data-filename="'.$v0['name'].'"><span class="caret"></span>  '.$v0['size'].'</p>
                                                 <a href="javascript:void(0)">
                                                     <img style="width:100%" src="'.$v0['url'].'">
                                                 </a>
@@ -125,7 +130,6 @@
                        setTimeout(function(){
                            $('#progress .progress-bar').css('width', '0%');
                        }, 1000);
-
                     }
                 });
 
@@ -155,7 +159,7 @@
             });
 
             if(images.length == 0 ) {
-                var r = {'status' : 3, 'message' : 'bad'};
+                var r = {'status' : 3, 'message' : '至少需上傳一張banner圖片'};
                 _swal(r);
             }
             else {
@@ -175,7 +179,6 @@
                         r = r.responseJSON;
                         _swal(r);
                     },
-
                 });
             }
         });
