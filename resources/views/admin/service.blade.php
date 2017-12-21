@@ -12,28 +12,25 @@
         <section class="content">
             <div class="box">
                 <div class="box-body">
+                    <div style="height: auto">
+                        <div id="alert_w" class="callout">
+                            <p>拖曳"#"調整順序,&nbsp;&nbsp;單選欄位後進行編輯或刪除</p>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="nav-tabs-custom">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="tab_1">
-                                        <div class="box-body">
-                                            <table id="example" class="display" cellspacing="0" width="100%">
-                                                <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>名稱</th>
-                                                    <th>子名稱</th>
-                                                    <th style="display: none;">id</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <table id="example" class="display" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>名稱</th>
+                                        <th>子名稱</th>
+                                        <th style="display: none;">id</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

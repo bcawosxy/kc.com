@@ -377,7 +377,7 @@ class AdminController extends Controller
 					$edit = [
 						'sort' => $v0['sort'],
 						'name' => $v0['name'],
-						'title' => $v0['title'],
+						'title' => ($v0['title']) ? $v0['title'] : '',
 					];
 					Service::where('id', $v0['id'])->update($edit);
 				}

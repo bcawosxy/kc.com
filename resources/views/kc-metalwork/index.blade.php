@@ -25,13 +25,12 @@
                     </div>
                     <?php
                     foreach ($data['service'] as $k0 => $v0) {
+                        $title = ($v0['title']) ? '<ul><li>'.$v0['title'].'</li></ul>' : null ;
+
                     	echo '<div class="col-md-4 col-sm-6">
                             <h3>'.$v0['name'].'</h3>
-                            <div style="border-bottom: 1px solid #ff00003b;width: 10px;"></div>
-                            <ul>
-                                <li>'.$v0['title'].'</li>
-                            </ul>
-                         </div>';
+                            <div style="border-bottom: 1px solid #ff00003b;width: 10px;"></div>'.$title.'
+                        </div>';
                     }
                     ?>
                 </div>

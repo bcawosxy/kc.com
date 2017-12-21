@@ -32,10 +32,10 @@ CKEDITOR.editorConfig = function( config ) {
     ['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink','-','About']
   ];
 
-config.filebrowserBrowseUrl = '/js/ckfinder/ckfinder.html';
-config.filebrowserImageBrowseUrl = '/js/ckfinder/ckfinder.html?Type=Images';
-config.filebrowserFlashBrowseUrl = '/js/ckfinder/ckfinder.html?Type=Flash';
-config.filebrowserImageUploadUrl = '/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';//可上傳圖檔
+config.filebrowserBrowseUrl = '/js/admin/ckfinder/ckfinder.html';
+config.filebrowserImageBrowseUrl = '/js/admin/ckfinder/ckfinder.html?Type=Images';
+config.filebrowserFlashBrowseUrl = '/js/admin/ckfinder/ckfinder.html?Type=Flash';
+config.filebrowserImageUploadUrl = '/js/admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';//可上傳圖檔
 
 // config.filebrowserUploadUrl = 'http://ccckaass.tk/lib/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'; //可上傳一般檔案
 // config.filebrowserFlashUploadUrl = 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';//可上傳Flash檔案
