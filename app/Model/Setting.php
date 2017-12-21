@@ -11,7 +11,7 @@ class Setting extends Model
     static function getSetting($code = null, $key = null) {
         $return = '';
 
-        if( is_null($key)) {
+        if(is_null($key)) {
             $return = Setting::where(['code' => $code])->get();
         } else if(!is_null($code)) {
             $return = Setting::where(['code' => $code, 'key' => $key])->first();

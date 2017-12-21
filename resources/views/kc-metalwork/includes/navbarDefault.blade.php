@@ -5,8 +5,10 @@
             <span class="icon icon-bar"></span>
             <span class="icon icon-bar"></span>
         </button>
-        <a href="index.html" class="navbar-brand">
-            <span style="letter-spacing: 0.2em;padding-left: 10px;"> <img width="70" src="../images/logo.png">&nbsp;凱詮金屬有限公司</span>
+        <a href="{{url()->route('KC::index')}}" class="navbar-brand">
+            <span style="letter-spacing: 0.2em;padding-left: 10px;">
+                <img style="max-width: 300px;" src="../images/logo.png">
+            </span>
         </a>
     </div>
     <div class="collapse navbar-collapse">

@@ -55,11 +55,11 @@ class AdminController extends Controller
 	    $banner = Setting::getSetting('system', 'banner');
         $banners =[];
 	    foreach (json_decode($banner['value'], true) as $k0 => $v0) {
-			if(file_exists(public_path("storage/images/banner/").DIRECTORY_SEPARATOR.$v0)) {
-				$imagesize = getimagesize(public_path("storage/images/banner/") . DIRECTORY_SEPARATOR . $v0);
+			if(file_exists(public_path("storage/images/banner/").'/'.$v0)) {
+				$imagesize = getimagesize(public_path("storage/images/banner/") . '/' . $v0);
 				$banners[] = [
 					'name' => $v0,
-					'url' => url()->asset("storage/images/banner/") . DIRECTORY_SEPARATOR . $v0,
+					'url' => url()->asset("storage/images/banner/") . '/' . $v0,
 					'size' => $imagesize[0] . ' x ' . $imagesize[1],
 				];
 			}
@@ -389,10 +389,10 @@ class AdminController extends Controller
 
 	public function service()
 	{
-		$services = Service::orderBy('sort', 'asc')->get();
+		$services = Service::getServices();
 
 		$data = [
-			'services' => json_decode($services, true),
+			'services' => $services,
 		];
 
 		return view('admin.service', ['data' => $data]);
