@@ -50,6 +50,7 @@ class KcController extends Controller
 			$showcase[] = [
 				'id' => $v0['id'],
 				'name' => $v0['name'],
+				'url' => url()->route('KC::index'),
 				'cover' => url()->asset('storage/images/product').DIRECTORY_SEPARATOR.$v0['cover'],
 			];
 		}

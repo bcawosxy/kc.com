@@ -23,7 +23,7 @@
             </div>
             <div class="box-body">
                 <label>Title</label> :
-                <input class="form-control" maxlength="16" data-code="system" name="title" style="max-width:500px;" type="text" placeholder="Text" value="{{$data['title']['value']}}"><br>
+                <input class="form-control" maxlength="32" data-code="system" name="title" style="max-width:500px;" type="text" placeholder="Text" value="{{$data['title']['value']}}"><br>
                 <label>Description</label> :
                 <input class="form-control" maxlength="50" data-code="system" name="description" style="max-width:500px;" type="text" placeholder="Description" value="{{$data['description']['value']}}">
             </div>
@@ -38,6 +38,11 @@
                 <h3 class="box-title">網站Logo / Icon</h3>
             </div>
             <div class="box-body">
+                <div style="height: auto">
+                    <div id="alert_w" class="callout">
+                        <p>建議尺寸 : 約300*50 , 圖片格式 : JPG / JPEG / PNG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;檔案大小: 16MB</p>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label>Logo</label> : &nbsp;&nbsp;
                     <span class="btn btn-success fileinput-button fileupload" name="logo">
@@ -47,7 +52,12 @@
                     <br><br>
                     <img name="logo" src="{{ url()->asset('images/').DIRECTORY_SEPARATOR.$data['logo']['value'] }}"  onerror="this.src='{{asset('images/origin.png')}}'" data-state="old" data-code="system" class="img-responsive">
                 </div>
-
+                <br><br>
+                <div style="height: auto">
+                    <div id="alert_w" class="callout">
+                        <p>建議尺寸 : 約100*70 , 圖片格式 : JPG / JPEG / PNG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;檔案大小: 16MB</p>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label>Icon</label> : &nbsp;&nbsp;
                     <span class="btn btn-success fileinput-button fileupload" name="icon">

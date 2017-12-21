@@ -207,7 +207,7 @@ class AdminController extends Controller
 	{
 		$products = Product::getProducts();
         $data = [];
-		foreach (json_decode($products, true) as $k0 => $v0) {
+		foreach ($products as $k0 => $v0) {
 			$data[] = [
 				'id' => $v0['id'],
 				'name' => $v0['name'],
@@ -403,7 +403,7 @@ class AdminController extends Controller
         $e_showcase = Showcase::getShowcases();
         $showcase = [];
         $onCase = [];
-        foreach (json_decode($e_showcase, true) as $k0 => $v0) {
+        foreach ($e_showcase as $k0 => $v0) {
             $showcase[] = [
                 'id' => $v0['id'],
                 'name' => $v0['name'],
@@ -415,7 +415,7 @@ class AdminController extends Controller
 
         $e_product2showcase = Product::getProducts2Showcase();
         $product = [];
-        foreach (json_decode($e_product2showcase, true) as $k0 => $v0) {
+        foreach ($e_product2showcase as $k0 => $v0) {
             if(!in_array($v0['id'], $onCase)) {
                 $product[] = [
                     'id' => $v0['id'],

@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="">
+    <meta name="description" content="{{$mete_description}}">
     <meta name="keywords" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <title>Magnet - Minimal Portfolio Template</title>
+    <title>{{$mete_title}}</title>
 
     <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/bootstrap.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/font-awesome.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/flexslider.css')}}" type="text/css" />
-    <link rel="stylesheet" href=" {{URL::asset('css/kc-metalwork/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/style.css')}}" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
 
 </head>

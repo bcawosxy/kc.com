@@ -48,7 +48,7 @@
                 <?php
                 foreach ($data['showcase'] as $k0 => $v0) {
                 	echo ' <div class="col-md-4 col-sm-6">
-                        <a href="content.html">
+                        <a href="'.$v0['url'].'">
                             <div class="portfolio-thumb">
                                 <img src="'.$v0['cover'].'" class="img-responsive" alt="ProductShowCase">
                                 <div class="portfolio-overlay">

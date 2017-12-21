@@ -15,11 +15,13 @@ class Product extends Model
 
     static function getProducts() {
     	$return = Product::where('status', '!=', 'delete')->get();
-		return $return;
+
+		return json_decode($return, true);
 	}
 
     static function getProducts2Showcase() {
         $return = Product::where([['status', '=', 'open'], ['showcase', '=', 1]])->get();
-        return $return;
+
+        return json_decode($return, true);
     }
 }
