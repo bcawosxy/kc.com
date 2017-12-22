@@ -1,9 +1,9 @@
 @extends('admin.layout.master')
 
 @section('content')
+    <script src="{{ URL::asset('js/admin/ckeditor/adapters/jquery.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('js/admin/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('js/admin/ckfinder/ckfinder.js')}}" type="text/javascript"></script>
-    <script src="{{ URL::asset('js/admin/ckeditor/adapters/jquery.js')}}" type="text/javascript"></script>
 
 <div class="content-wrapper" style="height: auto;">
     <section class="content-header">
