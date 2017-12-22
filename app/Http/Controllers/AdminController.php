@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Hash;
 use App\Model\Admin;
 use App\Model\Product;
 use App\Model\Setting;
@@ -48,6 +49,17 @@ class AdminController extends Controller
 		$redirect =  url()->route('admin::about');
 
 		return json_encode_return($result, $message, $redirect );
+	}
+
+	public function admins()
+	{
+		$user = Auth::user();
+
+		$data = [
+			'user' => $user,
+		];
+
+		return view('admin.admins', ['data' => $data]);
 	}
 
 	public function banner() {
@@ -105,12 +117,39 @@ class AdminController extends Controller
         return json_encode_return($result, $message, $redirect );
     }
 
+	public function checkOldPasswordAdmins(Request $request)
+	{
+		$value = $request->value;
+
+		$message = '';
+		if(!Auth::attempt(['account' => 'admin', 'password' => $value])) {
+			$message = '舊密碼輸入錯誤, 請重新輸入';
+		}
+		return json_encode_return(1, $message);
+    }
+
 	public function fileUpload()
 	{
 		$options = array(
 			'image_versions' => [],
 		);
 		$upload = new UploadHandler($options);
+	}
+
+	public function getAdmins()
+	{
+		$admins = Admin::orderBy('id', 'asc')->get();
+
+		foreach ($admins as $k0 => $v0) {
+			$admin['data'][] = [
+				'id' => $v0['id'],
+				'account' => $v0['account'],
+				'name' => $v0['name'],
+				'email' =>$v0['email'],
+			];
+		}
+
+		return json_encode($admin);
 	}
 
     public function getService()
@@ -326,6 +365,46 @@ class AdminController extends Controller
 
 		_return :
 		return json_encode_return($result, $message, $redirect );
+	}
+
+	public function refreshAdmins(Request $request)
+	{
+		$act = $request->act;
+		$data = $request->data;
+
+		switch ($act) {
+
+			case 'add' :
+//				$insert = [
+//					'account' => $data[0]['account'],
+//					'password' => Hash::make( $data[0]['account']),
+//					'name' => $data[0]['name'],
+//					'email' => $data[0]['email'],
+//				];
+//
+//				Service::insert($insert);
+				break;
+
+			case 'delete' :
+
+				foreach($data as $k0 => $v0) {
+//					Admin::where('id', $v0['id'])->delete();
+				}
+				break;
+
+			case 'update' :
+				foreach($data as $k0 => $v0) {
+					$edit = [
+						'account' => $v0['account'],
+						'name' => $v0['name'],
+						'email' => $v0['email'],
+					];
+					Admin::where('id', $v0['id'])->update($edit);
+				}
+				break;
+		}
+
+		return json_encode_return(1);
 	}
 
 	public function refreshService(Request $request)

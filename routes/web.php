@@ -43,6 +43,12 @@ Route::group(['prefix'=>'admin', 'as'=>'admin::'], function() {
 	Route::get('/banner', ['as' => 'banner', 'uses'=> 'AdminController@banner']) ;
 	Route::post('/banner/update', ['as' => 'bannerupdate','uses'=> 'AdminController@bannerEdit']) ;
 
+	//管理員設定
+	Route::get('/admins', ['as' => 'admins', 'uses'=> 'AdminController@admins']) ;
+	Route::get('/admins/get', ['uses'=> 'AdminController@getAdmins']) ; //for Datatable
+	Route::post('/admins/refresh', ['uses'=> 'AdminController@refreshAdmins']) ;
+	Route::post('/admins/checkOldPassword', ['uses'=> 'AdminController@checkOldPasswordAdmins']) ;
+
 	//檔案上傳
 	Route::post('/fileUpload/', ['as' => 'fileUpload', 'uses'=> 'AdminController@fileUpload']) ;
 
