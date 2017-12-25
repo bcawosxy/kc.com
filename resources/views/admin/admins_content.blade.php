@@ -37,7 +37,7 @@
                                         <input type="text" class="form-control" name="account" placeholder="管理員帳號" value="{{$data['admin']['account'] or ""}}">
                                     </dd>
                                     <br>
-                                    <div <?php if($data['act']== 'edit') echo 'style="display:none;"' ?> >
+                                    <div <?php if($data['act'] == 'edit') echo 'style="display:none;"' ?> >
                                         <dt>密碼:</dt>
                                         <dd>
                                             <input type="password" class="form-control" name="password" placeholder="管理員密碼">
@@ -59,7 +59,7 @@
                                         <input type="text" class="form-control" name="email" placeholder="管理員Email" value="{{$data['admin']['email'] or ""}}">
                                     </dd>
                                     <br>
-                                    <div>
+                                    <div <?php if($data['act'] == 'add') echo 'style="display:none;"' ?> >
                                         <dt>新增時間:</dt>
                                         <dd>
                                             <p class="text-muted">{{ $data['admin']['created_at'] or '' }}</p>
@@ -113,7 +113,7 @@
                     <i class="fa fa-save"></i> 儲存(Save)
                 </a>
 				<?php
-                if($data['act'] =='edit') echo '<a class="btn btn-app" id="delete"><i class="fa fa-trash-o"></i> 刪除(Delete)</a>';
+                if($data['act'] =='edit' && ($data['user']->id == $data['admin']['id']) ) echo '<a class="btn btn-app" id="delete"><i class="fa fa-trash-o"></i> 刪除(Delete)</a>';
 				?>
             </div>
         </div>

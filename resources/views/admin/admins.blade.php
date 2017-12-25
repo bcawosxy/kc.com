@@ -51,12 +51,10 @@
     @parent
     <script type="text/javascript">
         $(document).ready(function() {
-            $(function () {
                 $("#admins").DataTable({
                     "order": [[ 0, "asc" ]],
                     "pageLength": 25,
                 });
-            });
         });
     </script>
 @endsection

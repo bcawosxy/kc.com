@@ -19,16 +19,24 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <table id="example" class="display" cellspacing="0" width="100%">
+                            <table id="service" class="display" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>排序</th>
+                                        <th>#id</th>
                                         <th>名稱</th>
                                         <th>子名稱</th>
-                                        <th style="display: none;">id</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($data['services'] as $k0 => $v0)
+                                    <tr class="data">
+                                        <td name="sort">{{$v0['sort']}}</td>
+                                        <td name="id">{{$v0['id']}}</td>
+                                        <td name="name">{{$v0['name']}}</td>
+                                        <td name="title">{{$v0['title']}}</td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -42,82 +50,21 @@
 @section('footer')
     @parent
     <script type="text/javascript">
-        var editor;
-
         $(document).ready(function() {
-            editor = new $.fn.dataTable.Editor( {
-                table: "#example",
-                idSrc:  'sort',
-                fields: [{
-                    label: "排序:",
-                    name: "sort",
-                    type : "hidden"
-                }, {
-                    label: "名稱:",
-                    name: "name"
-                }, {
-                    label: "子名稱:",
-                    name: "title"
-                } ,{
-                    label: "id",
-                    name: "id",
-                    type : "hidden"
-                },
-                ],
-                i18n: {
-                    create: {
-                        title:  "新增服務項目",
-                        submit : '新增',
-                    },
-                    edit: {
-                        title:  "編輯服務項目",
-                        submit : '修改',
-                    },
-                    remove: {
-                        title:  "刪除服務項目",
-                        confirm: "刪除後無法復原, 確定要刪除嗎?",
-                        submit : '刪除',
-                    },
-                }
-            } );
-
-            var table = $('#example').DataTable( {
-                dom : "Bfrtip",
-                ajax : "{{url('admin/service/get')}}",
+            var table = $('#service').DataTable( {
                 order : [[0, "asc"]],
-                pageLength : 30,
+                pageLength : 25,
                 columns: [
                     { data: "sort", width : '6%', orderable : true},
+                    { data: "id", width : '6%', orderable : true},
                     { data: "name",},
                     { data: "title",},
-                    { data: "id", visible : false},
-                ],
-                columnDefs: [
-                    { orderable: false, targets: [ 0,1,2,3 ] }
                 ],
                 rowReorder: {
                     dataSrc: 'sort',
                 },
                 select : true,
-                buttons: [
-                    { extend: "create", editor: editor , text : '新增'},
-                    { extend: "edit",   editor: editor , text : '編輯'},
-                    { extend: "remove", editor: editor , text : '刪除'}
-                ],
             } );
-
-            editor.on( 'create', function ( e, json, data ) {
-                refreshData('add', json.data, table);
-            }).on( 'edit', function ( e, json, data ) {
-                refreshData('update', json.data, table);
-            }).on( 'remove', function ( e, json ) {
-                var rows = table.rows().data(),
-                    data = [];
-                for (i = 0; i < rows.length; i++) {
-                    data.push(rows[i]);
-                }
-                refreshData('delete', data, table);
-            });
 
             table.on( 'row-reordered', function ( e, diff, edit ) {
                 var rows = table.rows().data(),
@@ -127,7 +74,7 @@
                 }
                 refreshData('update', data, table);
             } );
-        } );
+        });
 
         function refreshData(act, data, table) {
             $.ajax({
@@ -142,11 +89,9 @@
                 },
                 dataType: 'json',
                 success: function (response) {
-                    table.ajax.reload( null, false );
                 },
                 error: function (response) {},
             });
         }
-
     </script>
 @endsection
