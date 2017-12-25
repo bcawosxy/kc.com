@@ -54,12 +54,124 @@ class AdminController extends Controller
 	public function admins()
 	{
 		$user = Auth::user();
+		$admins = Admin::get();
 
 		$data = [
+			'admins' => json_decode($admins, true),
 			'user' => $user,
 		];
 
 		return view('admin.admins', ['data' => $data]);
+	}
+
+	public function adminsContent($id = null)
+	{
+		$act = (is_null($id)) ? 'add' : 'edit';
+		$user = Auth::user();
+		switch ($act) {
+			case 'add' :
+				$admin = [];
+
+				break;
+
+			case 'edit' :
+				$admin = Admin::getAdmin($id);
+				break;
+
+			default :
+				// handle some error here...
+				break;
+		}
+
+		$data = [
+			'admin' => $admin,
+			'act' => $act,
+			'user' => $user,
+		];
+
+		return view('admin.admins_content', ['data'=> $data]);
+	}
+
+	public function adminsDelete(Request $request)
+	{
+		$id = $request->id;
+
+		$result = 0;
+		$message = '刪除失敗, 請重新操作。';
+		$redirect = url()->route('admin::adminsContent', ['id' => $id]);
+
+		if( Admin::where('id', $id)->delete() ) {
+			$result = 1;
+			$message = '成功刪除。';
+			$redirect = url()->route('admin::admins');
+		}
+
+		_return :
+		return json_encode_return($result, $message, $redirect );
+	}
+	
+	public function adminsEdit(Request $request)
+	{
+		$user = Auth::user();
+		//要取得的 POST Key
+		$postParams = ['id', 'act', 'account', 'old_password' , 'password', 're_password', 'name', 'email'];
+
+		foreach ($postParams as $v0) { $$v0 = $request->$v0; }
+
+		switch ($act) {
+			case 'add' :
+					if($account == '' || $name == '' || $email == '')  return json_encode_return(0, '資料未填寫完成, 請重新操作');
+					if($password == '' || $re_password == '') return json_encode_return(0, '未輸入密碼, 請重新輸入');
+					if(!is_email($email)) return json_encode_return(0, 'Email格式錯誤, 請重新輸入');
+				break;
+
+			case 'edit' :
+					if($account == '' || $name == '' || $email == '')  return json_encode_return(0, '資料未填寫完成, 請重新操作');
+					if(!is_email($email)) return json_encode_return(0, 'Email格式錯誤, 請重新輸入');
+				break;
+
+			case 'password' :
+					if(!Auth::attempt(['account' => $user->account, 'password' => $old_password])) return json_encode_return(0, '舊密碼輸入錯誤, 請重新輸入');
+				break;
+		}
+
+		$params = [
+			'account' => $account,
+			'name' => $name,
+			'email' => $email,
+		];
+
+		$result = 0;
+		$message = '錯誤, 請重新操作';
+		$redirect = null;
+
+		if($act == 'add') {
+			$params['created_at'] = $params['updated_at'] = inserttime();
+			$params['modify_id'] = $user->id;
+			$params['password'] = Hash::make($password);
+			$params['ip'] = $request->ip();
+
+			if(Admin::insert($params)) {
+				$result = 1;
+				$message = '新增資料完成';
+				$redirect = url()->route('admin::admins');
+			}
+		} else if($act == 'edit') {
+			if (Admin::where('id', $id)->update($params)) {
+				$result = 1;
+				$message = '修改資料完成';
+				$redirect = url()->route('admin::adminsContent', ['id' => $id]);
+			}
+		} else if($act == 'password') {
+			if(Admin::where('id', $user->id)->update(['password' => Hash::make($password)])) {
+				$result = 1;
+				$message = '密碼更新完成';
+				$redirect = url()->route('admin::admins');
+			}
+		}
+
+		_return :
+		return json_encode_return($result, $message, $redirect );
 	}
 
 	public function banner() {
@@ -117,55 +229,12 @@ class AdminController extends Controller
         return json_encode_return($result, $message, $redirect );
     }
 
-	public function checkOldPasswordAdmins(Request $request)
-	{
-		$value = $request->value;
-
-		$message = '';
-		if(!Auth::attempt(['account' => 'admin', 'password' => $value])) {
-			$message = '舊密碼輸入錯誤, 請重新輸入';
-		}
-		return json_encode_return(1, $message);
-    }
-
 	public function fileUpload()
 	{
 		$options = array(
 			'image_versions' => [],
 		);
 		$upload = new UploadHandler($options);
-	}
-
-	public function getAdmins()
-	{
-		$admins = Admin::orderBy('id', 'asc')->get();
-
-		foreach ($admins as $k0 => $v0) {
-			$admin['data'][] = [
-				'id' => $v0['id'],
-				'account' => $v0['account'],
-				'name' => $v0['name'],
-				'email' =>$v0['email'],
-			];
-		}
-
-		return json_encode($admin);
-	}
-
-    public function getService()
-    {
-        $services = Service::orderBy('sort', 'asc')->get();
-
-        foreach ($services as $k0 => $v0) {
-            $service['data'][] = [
-                'sort' => $v0['sort'],
-                'name' => $v0['name'],
-                'title' =>$v0['title'],
-                'id' => $v0['id'],
-            ];
-        }
-
-        return json_encode($service);
 	}
 
     public function index()
@@ -365,105 +434,6 @@ class AdminController extends Controller
 
 		_return :
 		return json_encode_return($result, $message, $redirect );
-	}
-
-	public function refreshAdmins(Request $request)
-	{
-		$act = $request->act;
-		$data = $request->data;
-
-		switch ($act) {
-
-			case 'add' :
-//				$insert = [
-//					'account' => $data[0]['account'],
-//					'password' => Hash::make( $data[0]['account']),
-//					'name' => $data[0]['name'],
-//					'email' => $data[0]['email'],
-//				];
-//
-//				Service::insert($insert);
-				break;
-
-			case 'delete' :
-
-				foreach($data as $k0 => $v0) {
-//					Admin::where('id', $v0['id'])->delete();
-				}
-				break;
-
-			case 'update' :
-				foreach($data as $k0 => $v0) {
-					$edit = [
-						'account' => $v0['account'],
-						'name' => $v0['name'],
-						'email' => $v0['email'],
-					];
-					Admin::where('id', $v0['id'])->update($edit);
-				}
-				break;
-		}
-
-		return json_encode_return(1);
-	}
-
-	public function refreshService(Request $request)
-	{
-		$act = $request->act;
-		$data = $request->data;
-
-		switch ($act) {
-
-			case 'add' :
-				$max = Service::max('sort');
-				$insert = [
-					'name' => $data[0]['name'],
-					'title' => $data[0]['title'],
-					'sort' => ($max+1),
-				];
-
-				Service::insert($insert);
-				break;
-
-			case 'delete' :
-				//還在table上的id
-				foreach($data as $k0 => $v0) {
-					$availableID[] = $v0['id'];
-				}
-
-				//資料庫內全部的id
-				$service = Service::select(['id'])->get();
-				foreach(json_decode($service, true) as $k0 => $v0) {
-					$id[] = $v0['id'];
-				}
-
-				//被刪除的id資料排序
-				$deleteServiceSort = Service::select(['sort'])->where('id', array_values(array_diff($id, $availableID))[0])->first();
-
-				//取得原本排序大於被移除項目的清單
-				$reSort = Service::where('sort', '>', json_decode( $deleteServiceSort, true )['sort'])->get();
-
-				foreach ( json_decode($reSort, true) as $k0 => $v0 ) {
-					Service::where('id', $v0['id'])->update(['sort'=>($v0['sort']-1)]);
-				}
-
-				Service::whereNotIn('id', $availableID)->delete();
-
-				break;
-
-			case 'update' :
-				foreach($data as $k0 => $v0) {
-					$edit = [
-						'sort' => $v0['sort'],
-						'name' => $v0['name'],
-						'title' => ($v0['title']) ? $v0['title'] : '',
-					];
-					Service::where('id', $v0['id'])->update($edit);
-				}
-				break;
-		}
-
-		return json_encode_return(1);
 	}
 
 	public function service()

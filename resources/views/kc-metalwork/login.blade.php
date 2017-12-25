@@ -37,11 +37,11 @@
                         </span>
                     @endif
                     <div class="form-group has-feedback">
-                        <input type="text" name="account" class="form-control" id="account" value="admin" placeholder="Account" required autofocus>
+                        <input type="text" name="account" class="form-control" id="account" value="" placeholder="Account" required autofocus>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" id="password" name="password" value="123456" placeholder="Password" required>
+                        <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password" required>
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="row">

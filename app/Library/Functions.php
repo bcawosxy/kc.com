@@ -98,6 +98,18 @@ if (!function_exists('inserttime')) {
 	}
 }
 
+if (!function_exists('is_email')) {
+	/**
+	 * 判斷是否為 email
+	 * <p>v1.0 2017-12-25</p>
+	 * @param string $value
+	 * @return mixed
+	 */
+	function is_email($email) {
+		return filter_var($email, FILTER_VALIDATE_EMAIL) ;
+	};
+}
+
 if (!function_exists('is_url')) {
 	/**
 	 * 判斷是否為 url
@@ -162,3 +174,6 @@ if (!function_exists('set_ip_log')) {
 		}
 	};
 }
+
+
+
