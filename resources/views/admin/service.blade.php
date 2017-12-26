@@ -42,6 +42,9 @@
                         </div>
                     </div>
                 </div>
+                <a class="btn btn-app " id="add" href="javascript:void(0);">
+                    <i class="fa fa-plus-square-o"></i> 新增服務項目
+                </a>
             </div>
         </section>
     </div>
@@ -73,8 +76,24 @@
                     data.push(rows[i]);
                 }
                 refreshData('update', data, table);
-            } );
+            });
+
+            $('#add').on('click', function() {
+                var html = '<div>名稱:<br><input name="name" type="text"><br><br>子名稱:<br><input name="title" type="text"><br><br><input onclick="show();" id="addService" class="btn btn-primary" type="button" value="送出"></div>',
+                    model = new jBox('Modal', {
+                    width: 'auto',
+                    height: 200,
+                    title: '新增服務項目',
+                    content: html,
+                }).open();
+            });
+
+
         });
+
+        function show(value) {
+            alert(value);
+        }
 
         function refreshData(act, data, table) {
             $.ajax({
@@ -88,8 +107,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 dataType: 'json',
-                success: function (response) {
-                },
+                success: function (response) {},
                 error: function (response) {},
             });
         }

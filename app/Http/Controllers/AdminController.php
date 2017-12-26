@@ -505,7 +505,6 @@ class AdminController extends Controller
         return json_encode_return(1);
     }
 
-
 	public function service()
 	{
 		$services = Service::getServices();
@@ -517,6 +516,11 @@ class AdminController extends Controller
 		return view('admin.service', ['data' => $data]);
 	}
 
+	public function serviceEdit(Request $request)
+	{
+		print_r(123123);
+	}
+	
     public function showcase()
     {
         $e_showcase = Showcase::getShowcases();

@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/icheck/all.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/font-awesome/css/font-awesome.css')}}">
 
-    <link rel="stylesheet" href="{{ URL::asset('plugins/datatables/css/editor.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('plugins/datatables/css/jquery.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('plugins/datatables/css/buttons.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('plugins/datatables/css/select.dataTables.min.css')}}">
@@ -24,6 +23,7 @@
     <link rel="stylesheet" href="{{ URL::asset('adminlte/plugins/select2/select2.min.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('js/admin/sweet-alert2/css/sweet-alert2.min.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('js/admin/jquery-ui-1.12.1.custom/jquery-ui.min.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('js/admin/jbox/jBox.css')}}">
 
     <link rel="stylesheet" href="{{ URL::asset('js/admin/croppie/croppie.min.css')}}">
 
@@ -61,7 +61,6 @@
     <script src="{{ URL::asset('plugins/datatables/js/jquery.dataTables.min.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('plugins/datatables/js/dataTables.buttons.min.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('plugins/datatables/js/dataTables.select.min.js')}}" type="text/javascript"></script>
-    <script src="{{ URL::asset('plugins/datatables/js/dataTables.editor.min.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('plugins/datatables/js/dataTables.rowReorder.min.js')}}" type="text/javascript"></script>
 
     <script src="{{ URL::asset('adminlte/adminlte/js/app.min.js')}}" type="text/javascript"></script>
@@ -76,6 +75,7 @@
     <script src="{{ URL::asset('adminlte/plugins/highcharts/js/exporting.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('adminlte/plugins/highcharts/js/sand-signika.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('js/admin/croppie/croppie.min.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('js/admin/jbox/jBox.min.js')}}" type="text/javascript"></script>
 
     @show
 <script>

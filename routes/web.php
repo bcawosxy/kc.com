@@ -23,6 +23,7 @@ Route::group(['prefix'=>'admin', 'as'=>'admin::'], function() {
     //服務項目
     Route::get('/service', ['as' => 'service', 'uses'=> 'AdminController@service']) ;
     Route::get('/service/get', ['uses'=> 'AdminController@getService']) ; //for Datatable
+    Route::post('/service/edit', ['uses'=> 'AdminController@serviceEdit']) ;
     Route::post('/service/refresh', ['uses'=> 'AdminController@refreshService']) ;
 
 	//作品管理
