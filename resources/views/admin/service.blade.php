@@ -91,8 +91,28 @@
 
         });
 
-        function show(value) {
-            alert(value);
+        function show() {
+            var name = $('input[name="name"]').val(),
+                title = $('input[name="title"]').val() || '';
+
+            if(!name) {
+                alert('必須輸入服務項目');
+            } else {
+                $.ajax({
+                    url : '{{url("admin/service/edit")}}',
+                    type: 'post',
+                    data: {
+                        act : 'add',
+                        data : data,
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    dataType: 'json',
+                    success: function (response) {},
+                    error: function (response) {},
+                });
+            }
         }
 
         function refreshData(act, data, table) {
