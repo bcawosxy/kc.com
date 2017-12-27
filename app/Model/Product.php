@@ -13,8 +13,12 @@ class Product extends Model
 		return $return;
 	}
 
-    static function getProducts() {
-    	$return = Product::where('status', '!=', 'delete')->get();
+    static function getProducts($params = []) {
+    	if($params) {
+			$return = Product::where($params)->orderBy('updated_at' ,'desc')->get();
+		} else {
+			$return = Product::where('status', '!=', 'delete')->orderBy('updated_at' ,'desc')->get();
+		}
 
 		return json_decode($return, true);
 	}

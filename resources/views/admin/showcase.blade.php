@@ -1,6 +1,11 @@
 @extends('admin.layout.master')
 
 @section('content')
+    <style>
+        div.item:hover {
+            cursor: move;
+        }
+    </style>
 <div class="content-wrapper" style="height: auto;">
     <section class="content-header">
         <div class="box-body"><h2>首頁 - 作品展示排列預覽</h2></div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Model\Admin;
 use App\Model\Product;
 use App\Model\Setting;
 use App\Model\Service;
@@ -93,6 +94,26 @@ class KcController extends Controller
         }
     }
 
+	public function product()
+	{
+		$products = Product::getProducts([['status', '=', 'open']]);
+		$data = [];
+		foreach ($products as $k0 => $v0) {
+			$data[] = [
+				'id' => $v0['id'],
+				'name' => $v0['name'],
+				'cover' =>  asset("storage/images/product/").DIRECTORY_SEPARATOR.$v0['cover'],
+				'status' => get_label($v0['status']),
+				'showcase' => get_label($v0['showcase']),
+				'admin' => Admin::getAdmin($v0['admin_id'])['name'],
+				'updated_at' => $v0['updated_at'],
+				'url' => url()->route('KC::content', ['id' => $v0['id']]),
+			];
+		}
+
+		return view('kc-metalwork.product', ['data' => $data]);
+    }
+    
     public function ShowLoginPage()
     {
         if (!Auth::check()) {

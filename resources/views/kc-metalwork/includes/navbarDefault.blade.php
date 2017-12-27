@@ -15,7 +15,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="{{url()->route('KC::index')}}">首頁</a></li>
             <li><a href="{{url()->route('KC::about')}}">關於我們</a></li>
-            {{--<li><a href="{{url()->route('KC::product')}}">作品</a></li>--}}
+            <li><a href="{{url()->route('KC::product')}}">作品</a></li>
             {{--<li><a href="{{url()->route('KC::contact')}}">聯絡我們</a></li>--}}
         </ul>
     </div>

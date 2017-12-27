@@ -49,7 +49,7 @@
                 	echo ' <div class="col-md-4 col-sm-6">
                         <a href="'.$v0['url'].'">
                             <div class="portfolio-thumb">
-                                <img src="'.$v0['cover'].'" class="img-responsive" alt="ProductShowCase">
+                                <img src="'.$v0['cover'].'" style="opacity: 0.8" class="img-responsive" alt="'.$v0['name'].'">
                                 <div class="portfolio-overlay">
                                     <div class="portfolio-item">
                                         <h3>'.$v0['name'].'</h3>
