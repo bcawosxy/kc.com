@@ -452,44 +452,6 @@ class AdminController extends Controller
         $data = $request->data;
 
         switch ($act) {
-
-            case 'add' :
-                $max = Service::max('sort');
-                $insert = [
-                    'name' => $data[0]['name'],
-                    'title' => $data[0]['title'],
-                    'sort' => ($max+1),
-                ];
-
-                Service::insert($insert);
-                break;
-
-            case 'delete' :
-                //還在table上的id
-                foreach($data as $k0 => $v0) {
-                    $availableID[] = $v0['id'];
-                }
-
-                //資料庫內全部的id
-                $service = Service::select(['id'])->get();
-                foreach(json_decode($service, true) as $k0 => $v0) {
-                    $id[] = $v0['id'];
-                }
-
-                //被刪除的id資料排序
-                $deleteServiceSort = Service::select(['sort'])->where('id', array_values(array_diff($id, $availableID))[0])->first();
-
-                //取得原本排序大於被移除項目的清單
-                $reSort = Service::where('sort', '>', json_decode( $deleteServiceSort, true )['sort'])->get();
-
-                foreach ( json_decode($reSort, true) as $k0 => $v0 ) {
-                    Service::where('id', $v0['id'])->update(['sort'=>($v0['sort']-1)]);
-                }
-
-                Service::whereNotIn('id', $availableID)->delete();
-
-                break;
-
             case 'update' :
                 foreach($data as $k0 => $v0) {
                     $edit = [
@@ -518,7 +480,57 @@ class AdminController extends Controller
 
 	public function serviceEdit(Request $request)
 	{
-		print_r(123123);
+		$act = $request->act;
+		$data = $request->data;
+
+		$result = 0;
+		$message = '錯誤, 請重新操作';
+		$redirect = url()->route('admin::service');
+
+		switch ($act) {
+			case 'add' :
+				$max = Service::max('sort');
+				$insert = [
+					'name' => $data['name'],
+					'title' => $data['title'],
+					'sort' => ($max + 1),
+				];
+
+				if (Service::insert($insert)) {
+					$result = 1;
+					$message = '新增服務項目完成';
+				}
+				break;
+
+			case 'update' :
+				$edit = [
+					'name' => $data['name'],
+					'title' => $data['title'],
+				];
+
+				if (Service::where('id', $data['id'])->update($edit)) {
+					$result = 1;
+					$message = '服務項目更新完成';
+				}
+				break;
+
+			case 'delete' :
+				//取得原本排序大於被移除項目的清單
+				$reSort = Service::where('sort', '>', $data['sort'])->get();
+
+				foreach ( json_decode($reSort, true) as $k0 => $v0 ) {
+					Service::where('id', $v0['id'])->update(['sort'=>($v0['sort']-1)]);
+				}
+
+				if(Service::where('id', $data['id'])->delete()) {
+					$result = 1;
+					$message = '刪除成功';
+				}
+
+				break;
+		}
+
+		return json_encode_return($result, $message, $redirect);
 	}
 	
     public function showcase()

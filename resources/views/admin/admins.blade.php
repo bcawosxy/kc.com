@@ -18,7 +18,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>編輯</th>
+                                        <th></th>
                                         <th>帳號</th>
                                         <th>名稱</th>
                                         <th>Email</th>
