@@ -6,7 +6,7 @@
             <div class="box-body"><h2>管理員設定</h2></div>
             <ol class="breadcrumb">
                 <li><a href="{{url()->route('admin::index')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">服務項目管理</li>
+                <li class="active">管理員設定</li>
             </ol>
         </section>
         <section class="content">

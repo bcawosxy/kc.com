@@ -9,8 +9,7 @@
                         <h3>Work</h3>
                     </div>
                     <hr style="width: 100px;">
-
-                    @foreach ($data as $k0 => $v0)
+                    @foreach ($data['products'] as $k0 => $v0)
                         <div class="col-md-4 col-sm-6">
                             <a href="{{$v0['url']}}">
                                 <div class="portfolio-thumb">
@@ -25,6 +24,46 @@
                         </div>
                     @endforeach
                 </div>
+            </div>
+            <br>
+            <div class="row">
+                <nav style="float: right;" aria-label="...">
+                    <ul class="pagination">
+                        <?php
+                            if($data['currentPage'] == 1) {
+                                $previousClass = 'disabled';
+                                $previousUrl = 'javascript:void(0);';
+                            } else {
+                                $previousClass = null;
+                                $previousUrl = url()->route('KC::product', ['page' => ($data['currentPage']-1)]);
+                            }
+                            if($data['allPages'] > 1) {
+                               echo '<li class="'.$previousClass.'"><a href="'.$previousUrl.'" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+                            }
+
+                            if($data['allPages'] > 1) {
+                                for($i = 1; $i <= $data['allPages']; $i++) {
+                                    if($i == $data['currentPage']) {
+                                        echo '<li><a href="'.url()->route('KC::product', ['page' => $i]).'"><b>'.$i.'</b><span class="sr-only">(current)</span></a></li>';
+                                    } else {
+                                        echo '<li><a href="'.url()->route('KC::product', ['page' => $i]).'">'.$i.'<span class="sr-only">(current)</span></a></li>';
+                                    }
+                                }
+                            }
+
+                            if($data['currentPage'] == $data['allPages']) {
+                            $nextClass = 'disabled';
+                            $nextUrl = 'javascript:void(0);';
+                            } else {
+                            $nextClass = null;
+                            $nextUrl = url()->route('KC::product', ['page' => ($data['currentPage']+1)]);
+                            }
+                            if($data['allPages'] > 1) {
+                            echo '<li class="'.$nextClass.'"><a href="'.$nextUrl.'" aria-label="Previous"><span aria-hidden="true">&raquo;</span></a></li>';
+                            }
+                        ?>
+                    </ul>
+                </nav>
             </div>
         </div>
     </section>

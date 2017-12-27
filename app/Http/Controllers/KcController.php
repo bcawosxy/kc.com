@@ -94,12 +94,23 @@ class KcController extends Controller
         }
     }
 
-	public function product()
+	public function product($page = 1)
 	{
-		$products = Product::getProducts([['status', '=', 'open']]);
-		$data = [];
+	    $take = 12;
+        $skip = ($page-1)*$take;
+
+        $total = Product::where('status', 'open')->count();
+        $allPages = (($total%$take) !== 0) ? floor($total/$take)+1 : ($total/$take) ;
+
+		$products = Product::where('status', 'open')->orderBy('updated_at' ,'desc')->skip($skip)->take($take)->get();
+		$data = [
+		    'currentPage' => $page,
+		    'allPages' => $allPages,
+            'products' => array(),
+        ];
+
 		foreach ($products as $k0 => $v0) {
-			$data[] = [
+			$data['products'][] = [
 				'id' => $v0['id'],
 				'name' => $v0['name'],
 				'cover' =>  asset("storage/images/product/").DIRECTORY_SEPARATOR.$v0['cover'],

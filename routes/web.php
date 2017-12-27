@@ -3,7 +3,7 @@
 Route::group(['prefix'=>'/', 'as'=>'KC::'], function() {
 	Route::get('/', ['as' => 'index', 'uses'=> 'KcController@index']) ;
 	Route::get('/about', ['as' => 'about', 'uses'=> 'KcController@about']) ;
-	Route::get('/product', ['as' => 'product', 'uses'=> 'KcController@product']) ;
+	Route::get('/product/{page?}', ['as' => 'product', 'uses'=> 'KcController@product']) ;
 	Route::get('/content', ['as' => 'content', 'uses'=> 'KcController@content']) ;
 
 //

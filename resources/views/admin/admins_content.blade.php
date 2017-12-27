@@ -13,7 +13,7 @@
         <ol class="breadcrumb">
             <li><a href="{{ url()->route('admin::index')}}"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="{{ url()->route('admin::admins')}}"> 管理員設定</a></li>
-            <li class="active">{{ $data['admins'] or ''}}</li>
+            <li class="active">{{ $data['admin']['name'] or ''}}</li>
         </ol>
     </section>
 
@@ -131,7 +131,7 @@
                 password = $('input[name="edit_password"]').val(),
                 re_password = $('input[name="edit_re_password"]').val(),
                 check = false;
-                if( old_password.length < 8 || old_password.length > 16 || password.length < 8 || password.length > 16   ) {
+                if( old_password.length > 16 || password.length < 8 || password.length > 16   ) {
                     _swal({'status': 0, 'message': '密碼需為 8-16 字元'});
                     return;
                 } else if ( password != re_password ) {
