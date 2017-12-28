@@ -1,9 +1,10 @@
 @extends('admin.layout.master')
 
 @section('content')
-    <script src="{{ URL::asset('js/admin/ckeditor/adapters/jquery.js')}}" type="text/javascript"></script>
-    <script src="{{ URL::asset('js/admin/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
+    {{--<script src="{{ URL::asset('js/admin/ckeditor/ckeditor.js')}}" type="text/javascript"></script>--}}
+    <script src="{{ URL::asset('js/admin/ckeditor_4.8.0_full/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('js/admin/ckfinder/ckfinder.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('js/admin/ckeditor/adapters/jquery.js')}}" type="text/javascript"></script>
 
 <div class="content-wrapper" style="height: auto;">
     <section class="content-header">
@@ -28,8 +29,9 @@
                             {
                                 toolbar : 'Full',
                                 width: '80%',
-                                height: '400px',
-                            });
+                                height: '800px',
+                        });
+
                         CKFinder.setupCKEditor(content);
                     </script><br>
                     <a class="btn btn-app " id="save">

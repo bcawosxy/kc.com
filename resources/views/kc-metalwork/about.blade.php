@@ -9,7 +9,9 @@
                     <div class="section-title">
                         <h3>About Us</h3>
                     </div>
+                    <div class="aboutValue">
                     {!! $data['value'] !!}
+                    </div>
                 </div>
             </div>
         </div>
@@ -17,3 +19,11 @@
 
 @endsection
 
+@section('footer')
+    @parent
+    <script>
+        $(document).ready(function(){
+            $('.aboutValue').find('img').addClass('img-responsive');
+        })
+    </script>
+@endsection

@@ -10,10 +10,20 @@
                     </div>
                     <div class="clearfix"></div>
                     <hr>
+                    <div class="productContent">
                     {!! $data['product']['content'] !!}
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 @endsection
 
+@section('footer')
+    @parent
+    <script>
+        $(document).ready(function(){
+            $('.productContent').find('img').addClass('img-responsive');
+        })
+    </script>
+@endsection

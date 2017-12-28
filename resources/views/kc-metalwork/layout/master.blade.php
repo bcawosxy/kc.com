@@ -46,6 +46,7 @@
     @include('kc-metalwork.includes.footer')
 </footer>
 
+@section('footer')
 <!-- SCRIPTS -->
 <script src="{{ URL::asset('js/kc-metalwork/jquery.js')}}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/kc-metalwork/bootstrap.min.js')}}" type="text/javascript"></script>
@@ -67,5 +68,6 @@
         }
     });
 </script>
+    @show
 </body>
 </html>

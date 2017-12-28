@@ -7,7 +7,7 @@
         }
     </style>
 
-    <script src="{{ URL::asset('js/admin/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('js/admin/ckeditor_4.8.0_full/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('js/admin/ckfinder/ckfinder.js')}}" type="text/javascript"></script>
     <script src="{{ URL::asset('js/admin/ckeditor/adapters/jquery.js')}}" type="text/javascript"></script>
 
@@ -78,7 +78,7 @@
                                                 {
                                                     toolbar : 'Full',
                                                     width: '100%',
-                                                    height: '300px'
+                                                    height: '600px'
                                                 });
                                             CKFinder.setupCKEditor(content);
                                         </script>
