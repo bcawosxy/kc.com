@@ -6,10 +6,9 @@ Route::group(['prefix'=>'/', 'as'=>'KC::'], function() {
 	Route::get('/product/{page?}', ['as' => 'product', 'uses'=> 'KcController@product']) ;
 	Route::get('/content/{id?}', ['as' => 'content', 'uses'=> 'KcController@content']) ;
 
-//
-//	Route::get('/contact', ['as' => 'contact', 'uses'=> 'PindeltaController@contact']) ;
-//	Route::post('/contact/add', ['uses' => 'PindeltaController@contactAdd']);
-//
+	Route::get('/contact', ['as' => 'contact', 'uses'=> 'KcController@contact']) ;
+	Route::post('/contact', ['uses' => 'KcController@contactAdd']);
+
 	Route::get('/login', ['as' => 'login' , 'uses' => 'KcController@ShowLoginPage']);
 	Route::post('login', ['uses' => 'KcController@login']);
 });

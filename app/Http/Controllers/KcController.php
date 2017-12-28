@@ -27,6 +27,18 @@ class KcController extends Controller
         return view('kc-metalwork.about', ['data' => $data]);
     }
 
+	public function contact()
+	{
+
+		$services = Service::getServices();
+
+		$data = [
+			'services' => $services,
+		];
+
+		return view('kc-metalwork.contact', ['data' => $data]);
+    }
+
 	public function content($id = null)
 	{
 		$product = Product::getProduct($id);
