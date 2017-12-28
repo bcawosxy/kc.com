@@ -32,6 +32,20 @@ class AppServiceProvider extends ServiceProvider
 
         //取得底部icon
         View::share('icon', url()->asset("/images") . DIRECTORY_SEPARATOR . 'icon.png');
+
+        //navbar 用的menu active class
+        $routeName = url()->full();
+        if(strpos($routeName, 'about')) {
+        	$action = 'about';
+		} else if(strpos($routeName, 'product')|| strpos($routeName, 'content')) {
+        	$action = 'product';
+		} else if(strpos($routeName, 'contact')) {
+        	$action = 'contact';
+        } else {
+        	$action = 'index';
+		}
+
+		View::share('action', $action);
 	}
 
     /**
