@@ -179,11 +179,6 @@ class AdminController extends Controller
 	{
 		$contacts = Contact::getContacts();
 
-		foreach ($contacts as $k0 => $v0) {
-			$service = Service::getService($v0['service']);
-			$contacts[$k0]['service'] = ($service) ? $service['name'] : '無' ;
-		}
-
 		$data = [
 			'contacts' => $contacts,
 		];
