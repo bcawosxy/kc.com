@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Hash;
 use App\Model\Admin;
+use App\Model\Contact;
 use App\Model\Product;
 use App\Model\Setting;
 use App\Model\Service;
@@ -172,6 +173,22 @@ class AdminController extends Controller
 
 		_return :
 		return json_encode_return($result, $message, $redirect );
+	}
+
+	public function contact()
+	{
+		$contacts = Contact::getContacts();
+
+		foreach ($contacts as $k0 => $v0) {
+			$service = Service::getService($v0['service']);
+			$contacts[$k0]['service'] = ($service) ? $service['name'] : '無' ;
+		}
+
+		$data = [
+			'contacts' => $contacts,
+		];
+
+		return view('admin.contact', ['data' => $data]);
 	}
 
 	public function banner() {

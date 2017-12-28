@@ -22,6 +22,9 @@ Route::group(['prefix'=>'admin', 'as'=>'admin::'], function() {
     Route::get('/about', ['as' => 'about', 'uses'=> 'AdminController@about']) ;
     Route::post('/about', ['uses'=> 'AdminController@aboutEdit']) ;
 
+    //聯絡我們
+	Route::get('/contact', ['as' => 'contact', 'uses'=> 'AdminController@contact']) ;
+
     //服務項目
     Route::get('/service', ['as' => 'service', 'uses'=> 'AdminController@service']) ;
     Route::get('/service/get', ['uses'=> 'AdminController@getService']) ; //for Datatable

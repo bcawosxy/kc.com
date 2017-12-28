@@ -18,6 +18,9 @@
             <li>
                 <a href="{{url('admin/banner')}}"><i class="fa fa-image"></i><span>  橫幅圖片設定</span></a>
             </li>
+            <li>
+                <a href="{{url('admin/contact')}}"><i class="fa fa-mail-reply"></i><span>  聯絡我們清單</span></a>
+            </li>
         </ul>
 
         <ul class="sidebar-menu">
@@ -46,6 +49,5 @@
                 <a href="{{url('admin/logout')}}"><i class="fa fa-sign-out"></i> <span>登出</span></a>
             </li>
         </ul>
-
     </section>
 </aside>

@@ -8,7 +8,14 @@ class Service extends Model
 {
 	protected $table = 'service';
 	
-	static public function getServices()
+	static function getService($id)
+	{
+		$return = Service::where('id', $id)->first();
+
+		return json_decode($return, true);
+	}
+	
+	static function getServices()
 	{
 		$return = Service::orderBy('sort', 'asc')->get();
 
