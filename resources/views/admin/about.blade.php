@@ -31,7 +31,6 @@
                                 width: '80%',
                                 height: '800px',
                         });
-
                         CKFinder.setupCKEditor(content);
                     </script><br>
                     <a class="btn btn-app " id="save">
