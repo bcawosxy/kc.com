@@ -1,6 +1,12 @@
 @extends('kc-metalwork.layout.master')
 
 @section('content')
+    <style>
+        .pagination>li>a {
+            border:0px;
+        }
+    </style>
+
     <section id="portfolio">
         <div class="container">
             <div class="row">
@@ -44,9 +50,9 @@
                             if($data['allPages'] > 1) {
                                 for($i = 1; $i <= $data['allPages']; $i++) {
                                     if($i == $data['currentPage']) {
-                                        echo '<li><a href="'.url()->route('KC::product', ['page' => $i]).'"><b>'.$i.'</b><span class="sr-only">(current)</span></a></li>';
+                                        echo '<li><a href="'.url()->route('KC::product', ['page' => $i]).'"><b>'.$i.'</b></a></li>';
                                     } else {
-                                        echo '<li><a href="'.url()->route('KC::product', ['page' => $i]).'">'.$i.'<span class="sr-only">(current)</span></a></li>';
+                                        echo '<li><a href="'.url()->route('KC::product', ['page' => $i]).'">'.$i.'</a></li>';
                                     }
                                 }
                             }

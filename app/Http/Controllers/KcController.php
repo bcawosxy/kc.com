@@ -27,6 +27,19 @@ class KcController extends Controller
         return view('kc-metalwork.about', ['data' => $data]);
     }
 
+	public function content($id = null)
+	{
+		$product = Product::getProduct($id);
+
+		if(!$product) return redirect()->route('KC::product');
+
+		$data = [
+			'product' => $product,
+		];
+
+		return view('kc-metalwork.content', ['data' => $data]);
+    }
+    
 	public function index($page = 1)
 	{
 		$data = [];
@@ -65,7 +78,7 @@ class KcController extends Controller
 			$showcase[] = [
 				'id' => $v0['id'],
 				'name' => $v0['name'],
-				'url' => url()->route('KC::index'),
+				'url' =>  url()->route('KC::content', ['id' => $v0['id']]),
 				'cover' => url()->asset('storage/images/product').DIRECTORY_SEPARATOR.$v0['cover'],
 			];
 		}
