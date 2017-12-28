@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/font-awesome.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/flexslider.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('js/admin/sweet-alert2/css/sweet-alert2.min.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
 
 </head>
@@ -52,6 +53,8 @@
 <script src="{{ URL::asset('js/kc-metalwork/bootstrap.min.js')}}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/kc-metalwork/custom.js')}}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/kc-metalwork/jquery.flexslider-min.js')}}" type="text/javascript"></script>
+<script src="{{ URL::asset('js/admin/sweet-alert2/js/sweet-alert2.min.js')}}" type="text/javascript"></script>
+
 <script type="text/javascript">
     // Can also be used with $(document).ready()
     $(window).load(function() {

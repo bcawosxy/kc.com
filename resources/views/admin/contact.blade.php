@@ -20,7 +20,7 @@
                 <div class="box-body">
                     <div style="height: auto">
                         <div id="alert_w" class="callout">
-                            <p>*雙擊欄位進行編輯</p>
+                            <p>*雙擊欄位查看詳細內容</p>
                         </div>
                     </div>
                     <div class="row">
@@ -33,6 +33,7 @@
                                         <th>電話</th>
                                         <th>Email</th>
                                         <th>項目</th>
+                                        <th>時間</th>
                                         <th>內容</th>
                                     </tr>
                                 </thead>
@@ -44,6 +45,7 @@
                                         <td name="telephone">{{$v0['phone']}}</td>
                                         <td name="Email">{{$v0['email']}}</td>
                                         <td name="service">{{$v0['service']}}</td>
+                                        <td name="service">{{$v0['created_at']}}</td>
                                         <td name="content">{{$v0['content']}}</td>
                                     </tr>
                                 @endforeach
@@ -70,6 +72,7 @@
                     { data: "telephone",},
                     { data: "email",},
                     { data: "service",},
+                    { data: "created_at",},
                     { data: "content", visible : false,},
                 ],
                 select : true,
@@ -79,11 +82,12 @@
             $('#service tbody').on( 'dblclick', 'tr', function () {
                 if($('#editView').length > 0) $('#editView').remove();
                 var data = table.row( this ).data(),
-                    html = '<div><span class="contactTitle">名稱 : </span><br>'+data.name+'<br><br><span class="contactTitle">Email : </span><br>'+data.email+'<br><br><span class="contactTitle">服務項目 : </span><br>'+data.service+'<br><br><span class="contactTitle">聯絡內容 : </span><br>'+data.content+'',
+                    html = '<div><span class="contactTitle">名稱 : </span><br>'+data.name+'<br><br><span class="contactTitle">Email : </span><br>'+data.email+'<br><br><span class="contactTitle">服務項目 : </span><br>'+data.service+'<br><br><span class="contactTitle">聯絡內容 : </span><br>'+data.content+'<br><br><span class="contactTitle">建立時間 : </span><br>'+data.created_at+'',
                     model = new jBox('Modal', {
                         id : 'editView',
                         width: 'auto',
                         height: 'auto',
+                        minWidth : 300,
                         title: '聯絡內容',
                         content: html,
                         zIndex : '1058',

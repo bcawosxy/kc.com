@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Model\Admin;
+use App\Model\Contact;
 use App\Model\Product;
 use App\Model\Setting;
 use App\Model\Service;
@@ -39,6 +40,33 @@ class KcController extends Controller
 		return view('kc-metalwork.contact', ['data' => $data]);
     }
 
+    public function contactAdd(Request $request)
+    {
+        $data = $request->value;
+
+        if($data['service'] && $data['service'] != 'other' ) {
+            $service = Service::getService($data['service'])['name'];
+        } else {
+            $service = $data['service'];
+        }
+
+        $params = [
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'content' => $data['content'],
+            'service' => $service,
+            'email' => $data['email'],
+            'created_at' => inserttime(),
+            'ip' => $request->ip(),
+        ];
+
+        if(Contact::insert($params)) {
+            return json_encode_return(1, '您的訊息已成功提交, 我們將盡速與您聯繫, 謝謝。', url()->route('KC::contact'));
+        } else {
+            return json_encode_return(0, '錯誤, 請重新操作, 謝謝。', url()->route('KC::contact'));
+        }
+    }
+    
 	public function content($id = null)
 	{
 		$product = Product::getProduct($id);
