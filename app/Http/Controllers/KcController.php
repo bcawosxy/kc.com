@@ -14,6 +14,11 @@ use Illuminate\Routing\Controller;
 
 class KcController extends Controller
 {
+	public function __construct()
+	{
+		include_once (app_path('Library/Functions.php'));
+	}
+
     public function about() {
         $data = [];
         $about = Setting::getSetting('about', 'content');
@@ -88,11 +93,11 @@ class KcController extends Controller
 		$e_banner = Setting::getSetting('system', 'banner');
 		$banners =[];
 		foreach (json_decode($e_banner['value'], true) as $k0 => $v0) {
-			if(file_exists(public_path("storage/images/banner/").DIRECTORY_SEPARATOR.$v0)) {
-				$imagesize = getimagesize(public_path("storage/images/banner/") . DIRECTORY_SEPARATOR . $v0);
+			if(file_exists(public_path("images/banner/").DIRECTORY_SEPARATOR.$v0)) {
+				$imagesize = getimagesize(public_path("images/banner/") . DIRECTORY_SEPARATOR . $v0);
 				$banners[] = [
 					'name' => $v0,
-					'url' => url()->asset("storage/images/banner/") . DIRECTORY_SEPARATOR . $v0,
+					'url' => asset("images/banner/") . DIRECTORY_SEPARATOR . $v0,
 					'size' => $imagesize[0] . ' x ' . $imagesize[1],
 				];
 			}
@@ -119,7 +124,7 @@ class KcController extends Controller
 				'id' => $v0['id'],
 				'name' => $v0['name'],
 				'url' =>  url()->route('KC::content', ['id' => $v0['id']]),
-				'cover' => url()->asset('storage/images/product').DIRECTORY_SEPARATOR.$v0['cover'],
+				'cover' => asset('images/product').DIRECTORY_SEPARATOR.$v0['cover'],
 			];
 		}
 		$data['showcase'] = $showcase;
@@ -166,7 +171,7 @@ class KcController extends Controller
 			$data['products'][] = [
 				'id' => $v0['id'],
 				'name' => $v0['name'],
-				'cover' =>  asset("storage/images/product/").DIRECTORY_SEPARATOR.$v0['cover'],
+				'cover' =>  asset("images/product/").DIRECTORY_SEPARATOR.$v0['cover'],
 				'status' => get_label($v0['status']),
 				'showcase' => get_label($v0['showcase']),
 				'admin' => Admin::getAdmin($v0['admin_id'])['name'],
