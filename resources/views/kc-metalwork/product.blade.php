@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="section-title">
-                        <h3>Work</h3>
+                        <h3>Product</h3>
                     </div>
                     <hr style="width: 100px;">
                     @foreach ($data['products'] as $k0 => $v0)

@@ -42,7 +42,7 @@
         <div class="container">
             <div class="row">
                 <div class="section-title">
-                    <h3>Project</h3><hr>
+                    <h3>Product</h3><hr>
                 </div>
                 <?php
                 foreach ($data['showcase'] as $k0 => $v0) {

@@ -19,7 +19,7 @@
                 <a href="{{url('admin/banner')}}"><i class="fa fa-image"></i><span>  橫幅圖片設定</span></a>
             </li>
             <li>
-                <a href="{{url('admin/contact')}}"><i class="fa fa-mail-reply"></i><span>  聯絡我們清單</span></a>
+                <a href="{{url('admin/contact')}}"><i class="fa fa-mail-reply"></i><span>  聯絡我們</span></a>
             </li>
         </ul>
 
