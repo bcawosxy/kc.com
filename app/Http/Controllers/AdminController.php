@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use function Composer\Autoload\includeFile;
 use Hash;
 use App\Model\Admin;
 use App\Model\Contact;
@@ -18,6 +19,8 @@ class AdminController extends Controller
 	public function __construct()
 	{
 		$this->middleware('adminlogin', ['except' => ['logout']]);
+
+		include_once (app_path('Library/Functions.php'));
 	}
 
 	public function about()
@@ -191,11 +194,11 @@ class AdminController extends Controller
 	    $banner = Setting::getSetting('system', 'banner');
         $banners =[];
 	    foreach (json_decode($banner['value'], true) as $k0 => $v0) {
-			if(file_exists(public_path("storage/images/banner/").'/'.$v0)) {
-				$imagesize = getimagesize(public_path("storage/images/banner/") . '/' . $v0);
+			if(file_exists(public_path("images/banner/").'/'.$v0)) {
+				$imagesize = getimagesize(public_path("images/banner/") . '/' . $v0);
 				$banners[] = [
 					'name' => $v0,
-					'url' => url()->asset("storage/images/banner/") . '/' . $v0,
+					'url' => asset('images/banner/') . '/' . $v0,
 					'size' => $imagesize[0] . ' x ' . $imagesize[1],
 				];
 			}
@@ -214,7 +217,7 @@ class AdminController extends Controller
         $oldImages = []; $newImages = [];
 		$images = $request->images;
 		$uploadPath = public_path("upload/files/").DIRECTORY_SEPARATOR;
-		$storagePath  = public_path("storage/images/banner/").DIRECTORY_SEPARATOR;
+		$storagePath  = public_path("images/banner/").DIRECTORY_SEPARATOR;
 
 		foreach ($images as $k0 => $v0) {
 			if($v0['set'] == 'old') $oldImages[] = $v0['filename'];
@@ -355,7 +358,7 @@ class AdminController extends Controller
 
 			case 'edit' :
 				$product = json_decode(Product::getProduct($id), true);
-				$product['coverUrl'] = asset("storage/images/product/").DIRECTORY_SEPARATOR.$product['cover'];
+				$product['coverUrl'] = asset("images/product/").DIRECTORY_SEPARATOR.$product['cover'];
 				$product['admin'] = Admin::getAdmin($product['admin_id'])['name'];
 
 				break;
@@ -407,7 +410,7 @@ class AdminController extends Controller
 		//若是新上傳的圖要進行處裡
 		if($cover_state == 'new') {
             $coverName = uniqid().'.png';
-            base64toImage($cover, storage_path("app/public/images/product/$coverName"));
+            base64toImage($cover, public_path("images/product/$coverName"));
 		} else {
 		    $coverName = $cover;
         }
@@ -554,7 +557,7 @@ class AdminController extends Controller
             $showcase[] = [
                 'id' => $v0['id'],
                 'name' => $v0['name'],
-                'cover' => url()->asset('storage/images/product').DIRECTORY_SEPARATOR.$v0['cover'],
+                'cover' => asset('images/product').DIRECTORY_SEPARATOR.$v0['cover'],
             ];
 
             $onCase[] = $v0['id'];
@@ -567,7 +570,7 @@ class AdminController extends Controller
                 $product[] = [
                     'id' => $v0['id'],
                     'name' => $v0['name'],
-                    'cover' => url()->asset('storage/images/product') . DIRECTORY_SEPARATOR . $v0['cover'],
+                    'cover' => asset('images/product') . DIRECTORY_SEPARATOR . $v0['cover'],
                 ];
             }
         }
