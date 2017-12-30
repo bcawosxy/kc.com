@@ -3,7 +3,7 @@
         <ul class="sidebar-menu">
             <li class="header">後台首頁</li>
             <li>
-                <a href="{{url('admin')}}"><i class="fa fa-home"></i><span>  首頁資訊</span></a>
+                <a href="{{url('admin')}}"><i class="fa fa-home"></i><span>  首頁</span></a>
             </li>
         </ul>
 

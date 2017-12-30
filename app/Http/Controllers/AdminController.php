@@ -254,8 +254,10 @@ class AdminController extends Controller
 
     public function index()
     {
-
-        $data = [];
+        $user = Auth::user();
+        $data = [
+            'user' => $user,
+        ];
 
         return view('admin.index', ['data' => $data]);
     }

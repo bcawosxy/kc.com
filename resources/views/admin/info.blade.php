@@ -35,7 +35,7 @@
     <section class="content" style="min-height:180px;">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">網站Logo / Icon</h3>
+                <h3 class="box-title">網站Logo / 下方圖示</h3>
             </div>
             <div class="box-body">
                 <div style="height: auto">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Icon</label> : &nbsp;&nbsp;
+                    <label>圖示</label> : &nbsp;&nbsp;
                     <span class="btn btn-success fileinput-button fileupload" name="icon">
                         <i class="glyphicon glyphicon-plus"></i>
                         <span>Select files</span>
