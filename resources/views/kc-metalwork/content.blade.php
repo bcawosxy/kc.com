@@ -23,7 +23,11 @@
     @parent
     <script>
         $(document).ready(function(){
-            $('.productContent').find('img').addClass('img-responsive');
+            if(window.innerWidth < 1200) {
+                $('.productContent').find('img').addClass('img-responsive');
+            } else {
+                $('.productContent').find('img').removeClass('img-responsive');
+            }
         })
     </script>
 @endsection

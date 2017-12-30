@@ -6,7 +6,7 @@
         </div>
 
         <div class="col-md-4 col-sm-4">
-            <p title="address">{{$info['address']}}</p>
+            <p title="address"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{$info['address']}}</p>
         </div>
 
         <div class="col-md-offset-1 col-md-4 col-sm-offset-1 col-sm-3">
