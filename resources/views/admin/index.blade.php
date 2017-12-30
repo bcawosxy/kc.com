@@ -18,7 +18,7 @@
                                     <span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
 
                                     <div class="info-box-content">
-                                        <p class="text-light-blue">歡迎管理員 {{$data['user']['name']}} 登入</p>
+                                        <p class="text-light-blue">歡迎管理員 <span style="font-weight: bold;">{{$data['user']['name']}} </span> 登入</p>
                                         <p class="info-box-number">請從左側選單開始您的工作內容。</p>
                                     </div>
                                     <!-- /.info-box-content -->
