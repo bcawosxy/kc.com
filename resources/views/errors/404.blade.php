@@ -6,10 +6,7 @@
             <div class="row">
                 <div class="col-md-offset-1 col-md-10 col-sm-12">
                     <div class="section-title">
-                        <h3>About Us</h3>
-                    </div>
-                    <div class="aboutValue">
-                    {!! $data['value'] !!}
+                        <h4>錯誤的頁面連結, 3秒將為您引導回首頁...</h4>
                     </div>
                 </div>
             </div>
@@ -21,7 +18,9 @@
     @parent
     <script>
         $(document).ready(function(){
-            $('.aboutValue').find('img').addClass('img-responsive');
+            setTimeout(function(){
+                location.href="<?php echo url()->route('KC::index') ?>";
+            }, 3000);
         })
     </script>
 @endsection
