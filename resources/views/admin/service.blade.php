@@ -19,7 +19,7 @@
                 <div class="box-body">
                     <div style="height: auto">
                         <div id="alert_w" class="callout">
-                            <p>*拖曳"#"調整順序,&nbsp;&nbsp;單選欄位後進行編輯或刪除</p>
+                            <p>*拖曳"#"調整順序</p>
                             <p>*雙擊欄位進行編輯</p>
                         </div>
                     </div>

@@ -19,7 +19,7 @@
 
                                     <div class="info-box-content">
                                         <p class="text-light-blue">歡迎管理員 <span style="font-weight: bold;">{{$data['user']['name']}} </span> 登入</p>
-                                        <p class="info-box-number">請從左側選單開始您的工作內容。</p>
+                                        <p class="info-box-number">請選擇左側選單開始您的工作。</p>
                                     </div>
                                     <!-- /.info-box-content -->
                                 </div>
