@@ -21,7 +21,7 @@
 
         <div class="col-md-6 col-sm-6">
             <div class="footer-copyright">
-                <p>© 2017 All Rights Reserved.</p>
+                <p> &copy; 2017 All Rights Reserved.</p>
             </div>
         </div>
 
