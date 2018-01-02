@@ -6,13 +6,13 @@
         </div>
 
         <div class="col-md-4 col-sm-4">
-            <p title="address"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{$info['address']}}</p>
+            <p title="address"><i class="fa fa-map-marker fa-lg"></i>&nbsp;&nbsp;{{$info['address']}}</p>
         </div>
 
         <div class="col-md-offset-1 col-md-4 col-sm-offset-1 col-sm-3">
-            <p title="Email"><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<a href="mailto:{{$info['email']}}">{{$info['email']}}</a></p>
-            <p title="Telephone"><i class="fa fa-phone"></i>&nbsp;&nbsp;&nbsp;{{$info['telephone']}}</p>
-            <p title="Fax"><i class="fa fa-fax"></i>&nbsp;&nbsp;&nbsp;{{$info['fax']}}</p>
+            <p title="Email"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:{{$info['email']}}">{{$info['email']}}</a></p>
+            <p title="Telephone"><i class="fa fa-phone fa-lg"></i>&nbsp;&nbsp;{{$info['telephone']}}</p>
+            <p title="Fax"><i class="fa fa-fax"></i>&nbsp;&nbsp;{{$info['fax']}}</p>
         </div>
 
         <div class="clearfix col-md-12 col-sm-12">
