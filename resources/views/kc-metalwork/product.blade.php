@@ -5,6 +5,7 @@
         .pagination>li>a {
             border:0px;
         }
+
     </style>
 
     <section id="portfolio">
@@ -22,7 +23,7 @@
                                     <img src="{{$v0['cover']}}" style="opacity: 0.8" class="img-responsive" alt="{{$v0['name']}}">
                                     <div class="portfolio-overlay">
                                         <div class="portfolio-item">
-                                            <h3>{{$v0['name']}}</h3>
+                                            <h3 style="font-size:18px;">{{$v0['name']}}</h3>
                                         </div>
                                     </div>
                                 </div>

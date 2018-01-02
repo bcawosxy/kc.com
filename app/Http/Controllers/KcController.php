@@ -47,13 +47,18 @@ class KcController extends Controller
 
     public function contactAdd(Request $request)
     {
+
         $data = $request->value;
 
-        if($data['service'] && $data['service'] != 'other' ) {
+        if($data['service'] && $data['service'] != 'other') {
             $service = Service::getService($data['service'])['name'];
         } else {
             $service = $data['service'];
         }
+
+		if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+			return json_encode_return(0, 'Email格式錯誤, 請重新輸入。');
+		}
 
         $params = [
             'name' => $data['name'],

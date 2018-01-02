@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <select name="service" class="form-control">
-                            <option>服務項目</option>
+                            <option value="0">服務項目</option>
                             <option disabled>---------------</option>
                             @foreach($data['services'] as $k0 => $v0)
                                 <option value="{{$v0['id']}}">{{$v0['name']}}</option>
