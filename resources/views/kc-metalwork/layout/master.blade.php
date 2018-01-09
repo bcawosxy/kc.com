@@ -57,7 +57,6 @@
 <script src="{{ URL::asset('js/admin/sweet-alert2/js/sweet-alert2.min.js')}}" type="text/javascript"></script>
 
 <script type="text/javascript">
-    // Can also be used with $(document).ready()
     $(window).load(function() {
         $('.flexslider').flexslider({
             controlNav: "thumbnails"

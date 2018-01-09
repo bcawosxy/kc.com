@@ -90,7 +90,7 @@ class KcController extends Controller
 		return view('kc-metalwork.content', ['data' => $data]);
     }
     
-	public function index($page = 1)
+	public function index()
 	{
 		$data = [];
 
@@ -139,21 +139,11 @@ class KcController extends Controller
 
     public function login(Request $request)
     {
-
         if (Auth::attempt(['account' => $request->account, 'password' => $request->password])) {
-            //登入完成 進入後台
-//
-//            $user = Auth::user();
-//            $param = [
-//                'ip' => $request->ip(),
-//            ];
-//
-//            Admin::where('id', $user->id)->update($param);
-
             return redirect()->route('admin::index');
         } else {
             //登入失敗 回到登入頁
-            return redirect()->route('KC::login')->withErrors(['msg' => '帳號或密碼錯誤, 請重新登入。']);
+            return redirect()->route('KC::login')->withErrors(['msg' => '帳號或密碼錯誤, 請重新登入。'])->withInput();
         }
     }
 

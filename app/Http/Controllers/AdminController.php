@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use function Composer\Autoload\includeFile;
 use Hash;
 use App\Model\Admin;
 use App\Model\Contact;
