@@ -3,10 +3,10 @@
 @section('content')
 <div class="content-wrapper" style="height: auto;">
     <section class="content-header">
-        <div class="box-body"><h2>作品管理</h2></div>
+        <div class="box-body"><h2>實績案例管理</h2></div>
         <ol class="breadcrumb">
             <li><a href="{{url()->route('admin::index')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">作品管理</li>
+            <li class="active">實績案例管理</li>
         </ol>
     </section>
     <section class="content">
@@ -51,7 +51,7 @@
                             </table>
                         </div>
                         <a class="btn btn-app " id="add" href="{{url('admin/product/content')}}">
-                            <i class="fa fa-plus-square-o"></i> 新增作品
+                            <i class="fa fa-plus-square-o"></i> 新增實績案例
                         </a>
                     </div>
                 </div>

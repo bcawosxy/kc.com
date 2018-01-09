@@ -31,13 +31,13 @@ Route::group(['prefix'=>'admin', 'as'=>'admin::'], function() {
     Route::post('/service/edit', ['uses'=> 'AdminController@serviceEdit']) ;
     Route::post('/service/refresh', ['uses'=> 'AdminController@refreshService']) ;
 
-	//作品管理
+	//實績案例管理
 	Route::get('/product', ['as'=> 'product', 'uses'=> 'AdminController@product']) ;
 	Route::get('/product/content/{id?}', ['as'=> 'productContent', 'uses'=> 'AdminController@productContent']) ;
 	Route::post('/product/delete/', ['uses'=> 'AdminController@productDelete']) ;
 	Route::post('/product/edit', ['uses'=> 'AdminController@productEdit']) ;
 
-    //首頁作品展示設定
+    //首頁實績案例展示設定
 	Route::get('/showcase', ['as' => 'showcase', 'uses'=> 'AdminController@showcase']) ;
 	Route::post('/showcase/update', ['as' => 'showcaseupdate', 'uses'=> 'AdminController@showcaseUpdate']) ;
 

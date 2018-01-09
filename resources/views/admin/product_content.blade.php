@@ -13,10 +13,10 @@
 
     <div class="content-wrapper" style="height: auto;">
     <section class="content-header">
-        <div class="box-body"><h2>作品管理</h2></div>
+        <div class="box-body"><h2>實績案例管理</h2></div>
         <ol class="breadcrumb">
             <li><a href="{{ url()->route('admin::index')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{ url()->route('admin::product')}}"> 作品管理</a></li>
+            <li><a href="{{ url()->route('admin::product')}}"> 實績案例管理</a></li>
             <li class="active">{{ $data['product']['name'] or ''}}</li>
         </ol>
     </section>

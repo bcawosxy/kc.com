@@ -24,12 +24,12 @@
         </ul>
 
         <ul class="sidebar-menu">
-            <li class="header">作品成果管理</li>
+            <li class="header">實績案例管理</li>
             <li>
-                <a href="{{url('admin/product')}}"><i class="fa fa-server"></i><span> 作品管理</span></a>
+                <a href="{{url('admin/product')}}"><i class="fa fa-server"></i><span> 實績案例管理</span></a>
             </li>
             <li>
-                <a href="{{url('admin/showcase')}}"><i class="fa fa-sliders"></i><span>  作品展示設定</span></a>
+                <a href="{{url('admin/showcase')}}"><i class="fa fa-sliders"></i><span>  實績案例展示設定</span></a>
             </li>
         </ul>
 

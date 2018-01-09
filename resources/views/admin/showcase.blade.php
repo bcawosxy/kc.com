@@ -8,10 +8,10 @@
     </style>
 <div class="content-wrapper" style="height: auto;">
     <section class="content-header">
-        <div class="box-body"><h2>首頁 - 作品展示排列預覽</h2></div>
+        <div class="box-body"><h2>首頁 - 實績案例展示排列預覽</h2></div>
         <ol class="breadcrumb">
             <li><a href="{{url()->route('admin::index')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">作品展示排列預覽</li>
+            <li class="active">實績案例展示排列預覽</li>
         </ol>
     </section>
     <section class="content">
@@ -19,15 +19,15 @@
             <div class="box-body">
                 <div style="height: 90px;">
                     <div id="alert_w" class="callout">
-                        <p>在 <a style="color:#3c8dbc;" href="{{url()->route('admin::product')}}">作品管理</a> 設定該作品可做 "首頁展示" 才能在此進行排列</p>
+                        <p>在 <a style="color:#3c8dbc;" href="{{url()->route('admin::product')}}">實績案例管理</a> 設定該實績案例可做 "首頁展示" 才能在此進行排列</p>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <!-- 未排序作品 -->
+                    <!-- 未排序實績案例 -->
                     <div class="row col-md-3">
                         <div class="box box-solid">
                             <div class="box-header with-border">
-                                <h3 class="box-title">未排序作品</h3>
+                                <h3 class="box-title">未排序實績案例</h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body text-center" style="background-color: #fcfcfc;">
@@ -44,13 +44,13 @@
                             </div>
                         </div>
                     </div>
-                    <!-- //未排序作品 -->
+                    <!-- //未排序實績案例 -->
 
-                    <!-- 排列展示作品 -->
+                    <!-- 排列展示實績案例 -->
                     <div class="row col-md-8 col-md-offset-1">
                         <div class="box box-solid">
                             <div class="box-header with-border">
-                                <h3 class="box-title">首頁作品展示預覽</h3>
+                                <h3 class="box-title">首頁實績案例展示預覽</h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body text-center"  style="background-color: #fcfcfc;">
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- //排列展示作品 -->
+                    <!-- //排列展示實績案例 -->
                 </div>
             </div>
         </div>
