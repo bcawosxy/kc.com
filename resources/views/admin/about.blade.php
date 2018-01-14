@@ -19,7 +19,7 @@
             <div class="box-body">
                 <div style="height: auto">
                     <div id="alert_w" class="callout">
-                        <p>(建議上傳圖片格式: PNG / JPEG / JPG)</p>
+                        <p class="text-light-blue">(建議上傳圖片格式: PNG / JPEG / JPG)</p>
                     </div>
                 </div>
                 <form method="POST">

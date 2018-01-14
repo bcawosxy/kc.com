@@ -20,7 +20,7 @@
                 <div class="box-body">
                     <div style="height: auto">
                         <div id="alert_w" class="callout">
-                            <p>*雙擊欄位查看詳細內容</p>
+                            <p class="text-light-blue">*雙擊欄位查看詳細內容</p>
                         </div>
                     </div>
                     <div class="row">

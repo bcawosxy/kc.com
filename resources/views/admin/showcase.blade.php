@@ -19,7 +19,7 @@
             <div class="box-body">
                 <div style="height: 90px;">
                     <div id="alert_w" class="callout">
-                        <p>在 <a style="color:#3c8dbc;" href="{{url()->route('admin::product')}}">實績案例管理</a> 設定該實績案例可做 "首頁展示" 才能在此進行排列</p>
+                        <p class="text-light-blue">在 <a style="color:#dd4b39;" href="{{url()->route('admin::product')}}">實績案例管理</a> 設定該實績案例可做 "首頁展示" 才能在此進行排列</p>
                     </div>
                 </div>
                 <div class="col-md-12">

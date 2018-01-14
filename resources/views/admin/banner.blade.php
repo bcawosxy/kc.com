@@ -38,8 +38,8 @@
                 <div style="height: auto">
                     <div id="alert_w" class="callout">
                         <p class="text-red">※ 拖曳圖片改變順序</p>
-                        <p>圖片格式 : JPG / JPEG / PNG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;檔案大小: 16MB</p>
-                        <p>圖片尺寸比例約 2~3 : 1,  建議圖片尺寸相同</p>
+                        <p class="text-light-blue">圖片格式 : JPG / JPEG / PNG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;檔案大小: 16MB</p>
+                        <p class="text-light-blue">圖片尺寸比例約 2~3 : 1,  建議圖片尺寸相同</p>
                     </div>
                 </div>
                 <div class="row">

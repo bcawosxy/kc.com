@@ -19,8 +19,8 @@
                 <div class="box-body">
                     <div style="height: auto">
                         <div id="alert_w" class="callout">
-                            <p>*拖曳"#"調整順序</p>
-                            <p>*雙擊欄位進行編輯</p>
+                            <p class="text-light-blue">*拖曳"#"調整順序</p>
+                            <p class="text-light-blue">*雙擊欄位進行編輯</p>
                         </div>
                     </div>
                     <div class="row">

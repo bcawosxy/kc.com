@@ -40,7 +40,7 @@
             <div class="box-body">
                 <div style="height: auto">
                     <div id="alert_w" class="callout">
-                        <p>建議尺寸 : 約300*50 , 圖片格式 : JPG / JPEG / PNG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;檔案大小: 16MB</p>
+                        <p class="text-light-blue">建議尺寸 : 約300*50 , 圖片格式 : JPG / JPEG / PNG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;檔案大小: 16MB</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -55,7 +55,7 @@
                 <br><br>
                 <div style="height: auto">
                     <div id="alert_w" class="callout">
-                        <p>建議尺寸 : 約100*70 , 圖片格式 : JPG / JPEG / PNG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;檔案大小: 16MB</p>
+                        <p class="text-light-blue">建議尺寸 : 約100*70 , 圖片格式 : JPG / JPEG / PNG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;檔案大小: 16MB</p>
                     </div>
                 </div>
                 <div class="form-group">
