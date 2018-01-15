@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
+use App\Model\Setting;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-use App\Model\Setting;
 
 class AppServiceProvider extends ServiceProvider
 {

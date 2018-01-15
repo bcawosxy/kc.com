@@ -7,6 +7,7 @@
     <meta name="description" content="{{$mete_description}}">
     <meta name="keywords" content="">
     <meta name="author" content="">
+    <?php if($action != 'index' ) echo  '<meta name="robots" content="noindex, follow">' ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="{{{ asset('images/favicon.ico') }}}">
 
