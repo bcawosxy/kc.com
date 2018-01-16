@@ -11,10 +11,10 @@
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-            <li class="<?php if($action == 'index') echo 'active'; ?>"><a href="{{url()->route('KC::index')}}">首頁</a></li>
-            <li class="<?php if($action == 'about') echo 'active'; ?>"><a href="{{url()->route('KC::about')}}">關於我們</a></li>
-            <li class="<?php if($action == 'product') echo 'active'; ?>"><a href="{{url()->route('KC::product')}}">實績案例</a></li>
-            <li class="<?php if($action == 'contact') echo 'active'; ?>"><a href="{{url()->route('KC::contact')}}">聯絡我們</a></li>
+            <li itemscope itemtype="http://schema.org/LocalBusiness" itemref="_image2 _telephone3 _telephone4 _email5 _address6" class="<?php if($action == 'index') echo 'active'; ?>"><a href="{{url()->route('KC::index')}}">首頁</a></li>
+            <li itemscope itemtype="http://schema.org/LocalBusiness" itemref="_image2 _telephone3 _telephone4 _email5 _address6" class="<?php if($action == 'about') echo 'active'; ?>"><a href="{{url()->route('KC::about')}}"><span itemprop="name">關於我們</span></a></li>
+            <li itemscope itemtype="http://schema.org/LocalBusiness" itemref="_image2 _telephone3 _telephone4 _email5 _address6" class="<?php if($action == 'product') echo 'active'; ?>"><a href="{{url()->route('KC::product')}}"><span itemprop="name">實績案例</span></a></li>
+            <li itemscope itemtype="http://schema.org/LocalBusiness" itemref="_image2 _telephone3 _telephone4 _email5 _address6" class="<?php if($action == 'contact') echo 'active'; ?>"><a href="{{url()->route('KC::contact')}}"><span itemprop="name">聯絡我們</span></a></li>
         </ul>
     </div>
 </div>

@@ -8,7 +8,7 @@
                 <?php
                     foreach ($data['banner'] as $k0 => $v0) {
 						echo '<li class="slide1" data-thumb="'.$v0['url'].'">
-                            <img src="'.$v0['url'].'" />
+                            <img id="_image2" itemprop="image" src="'.$v0['url'].'" />
                         </li>';
                     }
                 ?>

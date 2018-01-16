@@ -5,14 +5,14 @@
             <img src="{{$icon}}">
         </div>
 
-        <div class="col-md-4 col-sm-4">
-            <p title="address"><i class="fa fa-map-marker fa-lg"></i>&nbsp;&nbsp;{{$info['address']}}</p>
+        <div id="_address6" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="col-md-4 col-sm-4">
+            <p itemprop="streetAddress" title="address"><i class="fa fa-map-marker fa-lg"></i>&nbsp;&nbsp;{{$info['address']}}</p>
         </div>
 
         <div class="col-md-offset-1 col-md-4 col-sm-offset-1 col-sm-3">
-            <p title="Email"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:{{$info['email']}}">{{$info['email']}}</a></p>
-            <p title="Telephone"><i class="fa fa-phone fa-lg"></i>&nbsp;&nbsp;{{$info['telephone']}}</p>
-            <p title="Fax"><i class="fa fa-fax"></i>&nbsp;&nbsp;{{$info['fax']}}</p>
+            <p title="Email"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:{{$info['email']}}"><span id="_email5" itemprop="email">{{$info['email']}}</span></a></p>
+            <p id="_telephone3" itemprop="telephone" title="Telephone"><i class="fa fa-phone fa-lg"></i>&nbsp;&nbsp;{{$info['telephone']}}</p>
+            <p id="_telephone4" itemprop="telephone" title="Fax"><i class="fa fa-fax"></i>&nbsp;&nbsp;{{$info['fax']}}</p>
         </div>
 
         <div class="clearfix col-md-12 col-sm-12">
