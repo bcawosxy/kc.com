@@ -30,7 +30,7 @@ class KcController extends Controller
             ];
         }
 
-        return view('kc-metalwork.about', ['data' => $data]);
+        return view('kc-metalwork.about', ['data' => $data, 'meta_title' => '關於我們']);
     }
 
 	public function contact()
@@ -42,7 +42,7 @@ class KcController extends Controller
 			'services' => $services,
 		];
 
-		return view('kc-metalwork.contact', ['data' => $data]);
+		return view('kc-metalwork.contact', ['data' => $data, 'meta_title' => '聯絡我們']);
     }
 
     public function contactAdd(Request $request)
@@ -87,7 +87,7 @@ class KcController extends Controller
 			'product' => $product,
 		];
 
-		return view('kc-metalwork.content', ['data' => $data, 'mete_title' => $product['name'].' - 實績案例']);
+		return view('kc-metalwork.content', ['data' => $data, 'meta_title' => $product['name'].' - 實績案例']);
     }
     
 	public function index()
@@ -175,7 +175,7 @@ class KcController extends Controller
 			];
 		}
 
-		return view('kc-metalwork.product', ['data' => $data]);
+		return view('kc-metalwork.product', ['data' => $data, 'meta_title' => '實績案例']);
     }
     
     public function ShowLoginPage()

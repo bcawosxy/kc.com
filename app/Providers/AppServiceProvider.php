@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
 	    //取得meta資料
 		$e_setting = Setting::getSetting('system');
 		foreach ($e_setting as $k0 => $v0) {
-			View::share('mete_'.$v0['key'], $v0['value']);
+			View::share('meta_'.$v0['key'], $v0['value']);
 		}
 
         //取得底部info資訊

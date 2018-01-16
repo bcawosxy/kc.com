@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="{{$mete_description}}">
+    <meta name="description" content="{{$meta_description}}">
     <meta name="keywords" content="">
     <meta name="author" content="">
     <?php if($action != 'index' ) echo  '<meta name="robots" content="noindex, follow">' ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="{{{ asset('images/favicon.ico') }}}">
 
-    <title>{{$mete_title}}</title>
+    <title>{{$meta_title}}</title>
 
     <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/bootstrap.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/font-awesome.min.css')}}" type="text/css">
