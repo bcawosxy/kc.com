@@ -87,7 +87,7 @@ class KcController extends Controller
 			'product' => $product,
 		];
 
-		return view('kc-metalwork.content', ['data' => $data]);
+		return view('kc-metalwork.content', ['data' => $data, 'mete_title' => $product['name'].' - 實績案例']);
     }
     
 	public function index()
