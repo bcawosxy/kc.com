@@ -15,9 +15,9 @@
 
     <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/bootstrap.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/font-awesome.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/flexslider.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/flexslider.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{URL::asset('css/kc-metalwork/style.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{ URL::asset('js/admin/sweet-alert2/css/sweet-alert2.min.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('js/admin/sweet-alert2/css/sweet-alert2.min.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
 
 </head>

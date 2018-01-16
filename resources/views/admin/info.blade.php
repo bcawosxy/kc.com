@@ -25,7 +25,7 @@
                 <label>Title</label> :
                 <input class="form-control" maxlength="32" data-code="system" name="title" style="max-width:500px;" type="text" placeholder="Text" value="{{$data['title']['value']}}"><br>
                 <label>Description</label> :
-                <input class="form-control" maxlength="50" data-code="system" name="description" style="max-width:500px;" type="text" placeholder="Description" value="{{$data['description']['value']}}">
+                <input class="form-control" maxlength="128" data-code="system" name="description" style="max-width:500px;" type="text" placeholder="Description" value="{{$data['description']['value']}}">
             </div>
         </div>
     </section>
