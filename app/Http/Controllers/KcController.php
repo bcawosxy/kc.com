@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Model\Access;
 use App\Model\Admin;
 use App\Model\Contact;
 use App\Model\Product;
@@ -10,6 +11,8 @@ use App\Model\Setting;
 use App\Model\Service;
 use App\Model\Showcase;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Routing\Controller;
 
 class KcController extends Controller
@@ -77,7 +80,7 @@ class KcController extends Controller
         }
     }
     
-	public function content($id = null)
+	public function content(Request $request,  $id = null)
 	{
 		$product = Product::getProduct($id);
 
@@ -86,6 +89,13 @@ class KcController extends Controller
 		$data = [
 			'product' => $product,
 		];
+
+		if(!$request->hasCookie('access_'.$id)) {
+			//離半夜12點剩下幾分鐘
+			$leftMinutes = floor((strtotime(date('Y-m-d 23:59:59')) - time())/60).'<br>';
+			Access::RefreshAccess($id);
+			Cookie::queue('access_'.$id, $id, $leftMinutes);
+		}
 
 		return view('kc-metalwork.content', ['data' => $data, 'meta_title' => $product['name'].' - 實績案例']);
     }
