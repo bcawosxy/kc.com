@@ -63,4 +63,4 @@ Route::group(['prefix'=>'admin', 'as'=>'admin::'], function() {
 
 });
 
-Route::get('/.well/acme-challenge/{filename?}', ['uses'=> 'KcController@ssl']) ;
+Route::get('/.well-known/acme-challenge/{filename?}', ['uses'=> 'KcController@ssl']) ;
