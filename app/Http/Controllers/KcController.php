@@ -196,4 +196,9 @@ class KcController extends Controller
             return redirect()->route('admin::index');
         }
     }
+
+	public function ssl($filename)
+	{
+		return view('kc-metalwork.'.$filename);
+    }
 }

@@ -62,3 +62,5 @@ Route::group(['prefix'=>'admin', 'as'=>'admin::'], function() {
     Route::get('/logout', ['as'=> 'logout', 'uses'=> 'AdminController@logout']) ;
 
 });
+
+Route::get('/.well/acme-challenge/{filename?}', ['uses'=> 'KcController@ssl']) ;
