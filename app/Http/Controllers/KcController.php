@@ -201,9 +201,4 @@ class KcController extends Controller
 	{
 		return view('kc-metalwork.'.$filename);
     }
-
-    public function BingSiteAuth()
-    {
-        return view('kc-metalwork.BingSiteAuth');
-    }
 }
